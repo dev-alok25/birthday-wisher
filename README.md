@@ -50,7 +50,15 @@ A customized, cartoon-themed birthday celebration website built by a curious dev
 
 ---
 
-## 🚀 How to Run
+## 🌐 Live Website (Deployed on GitHub Pages)
+
+👉 **Live Link**: [https://dev-alok25.github.io/dipanshi-birthday-wish/](https://dev-alok25.github.io/dipanshi-birthday-wish/)
+
+Share this link directly with Dipanshi on WhatsApp, Telegram, or Instagram!
+
+---
+
+## 🚀 How to Run Locally
 
 1. Open folder: `c:\Users\aloka\.gemini\antigravity-ide\scratch\birthday wish\`
 2. Double-click [index.html](file:///c:/Users/aloka/.gemini/antigravity-ide/scratch/birthday%20wish/index.html).
