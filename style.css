@@ -322,7 +322,7 @@ body {
 }
 
 .send-feedback-btn:hover {
-  transform: translateY(-2px scale(1.02);
+  transform: translateY(-2px) scale(1.02);
   box-shadow: 0 12px 30px rgba(233, 30, 99, 0.45);
 }
 
@@ -2263,7 +2263,7 @@ body {
 
 /* ================= Responsiveness & Mobile Phone UI ================= */
 @media (max-width: 768px) {
-  .characters-grid {
+  .characters-grid, .cartoon-stage {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 20px;
   }
@@ -2392,14 +2392,14 @@ body {
     font-size: 0.95rem;
   }
 
-  /* Characters Grid */
-  .characters-grid {
+  /* Characters Grid / Cartoon Stage */
+  .characters-grid, .cartoon-stage {
     grid-template-columns: 1fr;
     gap: 16px;
     margin-top: 15px;
   }
 
-  .char-card {
+  .character-card, .char-card {
     padding: 22px 14px;
     border-radius: 24px;
   }
@@ -2413,7 +2413,7 @@ body {
     height: 175px;
   }
 
-  .dora-btn, .motu-btn, .patlu-btn {
+  .feed-btn, .pocket-btn, .patlu-btn, .dora-btn, .motu-btn {
     width: 100%;
     min-height: 44px;
     font-size: 0.9rem;
@@ -2674,7 +2674,7 @@ body {
   }
 
   /* Developer Prank Matrix */
-  .prank-section {
+  .prank-section, .tease-playground-section {
     padding: 28px 14px;
     border-radius: 24px;
     margin-bottom: 35px;
@@ -2781,7 +2781,7 @@ body {
   }
 
   /* Wishes Wall & Footer */
-  .wishes-section {
+  .wishes-section, .wishes-wall {
     padding: 26px 14px;
     border-radius: 24px;
     margin-bottom: 30px;
