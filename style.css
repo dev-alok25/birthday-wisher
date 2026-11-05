@@ -2173,51 +2173,655 @@ body {
   margin-top: 6px;
 }
 
-/* ================= Responsiveness ================= */
+/* ================= Responsiveness & Mobile Phone UI ================= */
+@media (max-width: 768px) {
+  .characters-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .duo-showcase {
+    gap: 24px;
+  }
+}
+
 @media (max-width: 680px) {
+  html, body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  body {
+    padding-bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Top Navigation mobile row layout */
   .top-nav {
-    padding: 8px 12px;
+    padding: calc(8px + env(safe-area-inset-top, 0px)) 12px 8px;
     gap: 8px;
   }
+
   .nav-left {
     width: 100%;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
   }
+
+  .date-badge {
+    font-size: 0.8rem;
+    padding: 5px 12px;
+  }
+
   .now-playing-wrap {
-    font-size: 0.78rem;
-    padding: 3px 8px;
+    font-size: 0.74rem;
+    padding: 4px 8px;
   }
+
   .now-playing-title {
-    max-width: 130px;
+    max-width: 110px;
   }
+
   .nav-controls {
     width: 100%;
-    justify-content: flex-end;
+    display: flex;
     gap: 8px;
   }
+
+  .pill-btn {
+    flex: 1;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 10px;
+    font-size: 0.82rem;
+    min-height: 40px;
+  }
+
   .dev-badge-nav {
     display: none;
   }
-  .date-badge {
+
+  /* Sky Flyby Doraemon */
+  .sky-flyby {
+    height: 95px;
+    margin-top: 2px;
+  }
+
+  .doraemon-glider {
+    transform: scale(0.82);
+    transform-origin: left top;
+  }
+
+  .doraemon-svg {
+    width: 70px;
+    height: 85px;
+  }
+
+  .banner-box {
+    padding: 5px 10px;
+    border-width: 2px;
+  }
+
+  .banner-text {
     font-size: 0.82rem;
+  }
+
+  .banner-text strong {
+    font-size: 0.94rem;
+  }
+
+  /* Main Container */
+  .main-container {
+    padding: 6px 12px 50px;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 15px 6px 30px;
+  }
+
+  .main-title {
+    font-size: clamp(1.75rem, 7.5vw, 2.4rem);
+    line-height: 1.25;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  .badge-hero {
+    font-size: 0.78rem;
     padding: 4px 10px;
   }
-  .pill-btn {
-    padding: 6px 10px;
+
+  .hero-cta-btn {
+    width: 100%;
+    max-width: 280px;
+    min-height: 44px;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+
+  /* Characters Grid */
+  .characters-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 15px;
+  }
+
+  .char-card {
+    padding: 22px 14px;
+    border-radius: 24px;
+  }
+
+  .char-avatar {
+    height: 175px;
+  }
+
+  .char-avatar svg {
+    width: 140px;
+    height: 175px;
+  }
+
+  .dora-btn, .motu-btn, .patlu-btn {
+    width: 100%;
+    min-height: 44px;
+    font-size: 0.9rem;
+    padding: 10px 14px;
+    justify-content: center;
+  }
+
+  /* Birthday Cake */
+  .cake-section {
+    padding: 26px 14px;
+    border-radius: 24px;
+    margin-bottom: 35px;
+  }
+
+  .birthday-cake {
+    width: min(235px, 80vw);
+  }
+
+  .tier-top {
+    width: min(150px, 52vw);
+    height: 60px;
+  }
+
+  .tier-bottom {
+    width: min(205px, 72vw);
+    height: 70px;
+  }
+
+  .cake-plate {
+    width: min(235px, 82vw);
+    height: 14px;
+  }
+
+  .candles-row {
+    gap: 16px;
+  }
+
+  .candle-stick {
+    width: 11px;
+    height: 38px;
+  }
+
+  .center-candle .candle-stick {
+    height: 46px;
+  }
+
+  .flame {
+    width: 13px;
+    height: 22px;
+  }
+
+  .tier-text {
+    font-size: 0.82rem;
+    letter-spacing: 1.5px;
+  }
+
+  .cake-decorations {
+    font-size: 0.78rem;
+  }
+
+  .glow-button {
+    width: 100%;
+    max-width: 320px;
+    min-height: 46px;
+    font-size: 0.92rem;
+    padding: 12px 16px;
+  }
+
+  .wish-reveal {
+    padding: 16px 12px;
+    border-radius: 18px;
+  }
+
+  .wish-text {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  /* Anywhere Door Section & Modal */
+  .door-cta-card {
+    padding: 24px 14px;
+    border-radius: 24px;
+    margin-bottom: 35px;
+  }
+
+  .door-cta-btn {
+    width: 100%;
+    min-height: 44px;
+    font-size: 0.92rem;
+    padding: 10px 16px;
+    justify-content: center;
+  }
+
+  .door-frame {
+    width: min(94vw, 420px);
+    padding: 14px 10px;
+    border-radius: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .door-exterior {
+    min-height: 320px;
+    border-width: 3px;
+  }
+
+  .door-label {
+    font-size: 1.25rem;
+  }
+
+  .door-label span {
+    font-size: 0.82rem;
+  }
+
+  .portal-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .portal-quote {
+    font-size: 0.88rem;
+    padding: 10px;
+  }
+
+  .gadget-badge {
+    font-size: 0.78rem;
+    padding: 4px 8px;
+  }
+
+  /* Gift Section & Letter */
+  .gift-section {
+    padding: 28px 14px;
+    border-radius: 24px;
+    margin-bottom: 35px;
+  }
+
+  .gift-box {
+    width: 150px;
+    height: 135px;
+  }
+
+  .gift-lid {
+    width: 164px;
+    height: 34px;
+    left: -7px;
+  }
+
+  .gift-body {
+    width: 150px;
+    height: 108px;
+  }
+
+  .letter-card {
+    padding: 22px 14px;
+    border-radius: 20px;
+  }
+
+  .letter-stamp {
+    top: 14px;
+    right: 14px;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+
+  .letter-greeting {
+    font-size: 1.35rem;
+  }
+
+  .letter-body {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .letter-highlight {
+    font-size: 0.92rem;
+    padding: 10px 12px;
+    margin: 14px 0;
+  }
+
+  /* Samosa Minigame */
+  .minigame-section {
+    padding: 24px 12px;
+    border-radius: 24px;
+    margin-bottom: 35px;
+  }
+
+  .game-arena {
+    height: 230px;
+    border-radius: 16px;
+  }
+
+  .scoreboard {
+    font-size: 0.92rem;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .mini-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    min-height: 40px;
+  }
+
+  /* Duo Memories Polaroid Showcase */
+  .memories-section {
+    padding: 28px 14px;
+    border-radius: 24px;
+    margin-bottom: 35px;
+  }
+
+  .duo-showcase {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-top: 15px;
+  }
+
+  .polaroid-frame {
+    width: min(290px, 88vw);
+    max-width: 100%;
+    padding: 14px 14px 20px;
+    border-radius: 18px;
+    transform: none !important;
+  }
+
+  .polaroid-inner {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    max-height: 290px;
+    border-radius: 10px;
+  }
+
+  .frame-crown {
+    font-size: 2rem;
+    top: -20px;
+  }
+
+  .frame-badge {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    top: -10px;
+  }
+
+  .polaroid-caption strong {
+    font-size: 1.05rem;
+  }
+
+  .sub-caption {
     font-size: 0.8rem;
   }
-  .birthday-cake {
-    width: 240px;
+
+  .tease-btn {
+    width: 100%;
+    min-height: 42px;
+    font-size: 0.88rem;
+    padding: 10px 14px;
+    margin-top: 10px;
   }
-  .tier-top {
-    width: 150px;
-    height: 65px;
+
+  /* Developer Prank Matrix */
+  .prank-section {
+    padding: 28px 14px;
+    border-radius: 24px;
+    margin-bottom: 35px;
   }
-  .tier-bottom {
-    width: 210px;
-    height: 75px;
+
+  .tease-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 18px;
   }
-  .cake-plate {
-    width: 250px;
+
+  .prank-card {
+    padding: 18px 12px;
+    border-radius: 20px;
+  }
+
+  .prank-emoji {
+    font-size: 2.4rem;
+    margin: 6px 0;
+  }
+
+  .prank-title {
+    font-size: 1.08rem;
+  }
+
+  .prank-sub {
+    font-size: 0.82rem;
+    margin-bottom: 12px;
+  }
+
+  .trap-action-btn {
+    min-height: 44px;
+    font-size: 0.88rem;
+    padding: 10px 14px;
+  }
+
+  .iq-buttons-wrap {
+    min-height: 46px;
+    gap: 8px;
+    position: relative;
+  }
+
+  .trap-iq-btn {
+    min-height: 44px;
+    font-size: 0.85rem;
+    padding: 8px 10px;
+    touch-action: manipulation;
+  }
+
+  /* Teasing Dialog */
+  .tease-dialog {
+    padding: 14px;
+  }
+
+  .tease-dialog-content {
+    width: min(92vw, 380px);
+    padding: 22px 14px;
+    border-radius: 22px;
+    max-height: 88vh;
+    overflow-y: auto;
+  }
+
+  .tease-dialog-icon {
+    font-size: 3rem;
+  }
+
+  .tease-dialog-title {
+    font-size: 1.3rem;
+  }
+
+  .tease-dialog-msg {
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .tease-dialog-btn {
+    width: 100%;
+    min-height: 44px;
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+
+  /* 6th November Security Vault Screen */
+  .vault-overlay {
+    padding: 12px 8px;
+  }
+
+  .vault-box {
+    padding: 22px 12px;
+    border-radius: 22px;
+    max-height: 94vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    border-width: 3px;
+  }
+
+  .vault-big-lock {
+    font-size: 3.2rem;
+  }
+
+  .vault-badge {
+    font-size: 0.74rem;
+    padding: 3px 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .vault-title {
+    font-size: 1.45rem;
+    line-height: 1.25;
+  }
+
+  .vault-msg {
+    font-size: 0.88rem;
+    line-height: 1.45;
+    margin-bottom: 14px;
+  }
+
+  .vault-countdown-container {
+    padding: 10px;
+    margin-bottom: 14px;
+    border-radius: 14px;
+  }
+
+  .vault-countdown-title {
+    font-size: 0.88rem;
+    margin-bottom: 6px;
+  }
+
+  .vault-timer {
+    gap: 6px;
+  }
+
+  .vault-tblock {
+    min-width: 44px;
+    padding: 4px 6px;
+    border-radius: 8px;
+  }
+
+  .vault-tblock span {
+    font-size: 1.3rem;
+  }
+
+  .vault-tblock small {
+    font-size: 0.58rem;
+  }
+
+  .vault-colon {
+    font-size: 1.1rem;
+  }
+
+  .guard-tag {
+    font-size: 0.72rem;
+    padding: 4px 8px;
+  }
+
+  .passcode-form {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .pass-input {
+    width: 125px;
+    padding: 8px 10px;
+    font-size: 0.82rem;
+  }
+
+  .pass-submit-btn {
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    min-height: 38px;
+  }
+
+  .sneak-peek-btn {
+    font-size: 0.82rem;
+    padding: 8px 12px;
+  }
+
+  /* Wishes Wall & Footer */
+  .wishes-section {
+    padding: 26px 14px;
+    border-radius: 24px;
+    margin-bottom: 30px;
+  }
+
+  .wishes-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .wish-item {
+    padding: 16px 14px;
+    border-radius: 18px;
+  }
+
+  .birthday-footer {
+    padding: 30px 10px 20px;
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .date-badge {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+
+  .now-playing-wrap {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+  }
+
+  .now-playing-title {
+    max-width: 85px;
+  }
+
+  .pill-btn {
+    font-size: 0.76rem;
+    padding: 6px 8px;
+  }
+
+  .passcode-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pass-input {
+    width: 100%;
+    max-width: 160px;
+  }
+
+  .pass-submit-btn {
+    width: 100%;
+    max-width: 160px;
   }
 }

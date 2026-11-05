@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Happy Birthday Dipanshi! 🎂✨ Doraemon & Motu Patlu Celebration</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -661,8 +662,8 @@
     <!-- Curious Dev Bro's Secret Teasing Zone -->
     <section class="tease-playground-section">
       <div class="section-title-wrap">
-        <div class="dev-tag-pill">👨‍💻 BROTHER'S PRANK MATRIX 😈</div>
-        <h2 class="section-title">Dipanshi's Unexpected Teasing Zone!</h2>
+        <div class="dev-tag-pill">👨‍💻 PRANK MATRIX 😈</div>
+        <h2 class="section-title">Dipanshi's Unexpected Zone!</h2>
         <p class="section-subtitle">
           Warning Dipanshi: Your developer brother coded special traps behind these buttons! Press at your own risk! ⚡
         </p>
@@ -695,6 +696,7 @@
           <p class="prank-sub">Select the truthful answer:</p>
           <div class="iq-buttons-wrap">
             <button id="runawayDipanshiBtn" class="trap-iq-btn btn-runaway" onmouseenter="runawayButton(this)"
+              ontouchstart="runawayButton(this); event.preventDefault();" onpointerdown="runawayButton(this)"
               onclick="runawayButton(this)">
               Dipanshi 👧
             </button>

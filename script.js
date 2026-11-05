@@ -205,10 +205,14 @@ function shakeScreen() {
   }, 450);
 }
 
-// Runaway Button: Dipanshi option escapes when hovered/clicked
+// Runaway Button: Dipanshi option escapes when hovered/clicked/touched
 function runawayButton(btn) {
-  const randomX = (Math.random() - 0.5) * 200;
-  const randomY = (Math.random() - 0.5) * 110;
+  if (!btn) return;
+  const isMobile = window.innerWidth < 680;
+  const spreadX = isMobile ? 80 : 160;
+  const spreadY = isMobile ? 45 : 100;
+  const randomX = (Math.random() - 0.5) * spreadX;
+  const randomY = (Math.random() - 0.5) * spreadY;
   btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
 
   const hints = [
