@@ -800,20 +800,15 @@ function openGiftBox() {
 
 // ================= Character Interaction Buttons =================
 const motuQuotes = [
-  "Aha! Garam samosa kha ke dimaag ki batti jal gayi! Happy Birthday Dipanshi! 🥟🎉",
-  "Dipanshi, tum jiyo hazaro saal! Aur har saal mujhe party me samosay khilao! 🥳",
+  "Crunch, crunch, yum! 🥟 Garam samosa kha ke Motu ka dimaag chalu ho gaya! Happy Birthday Dipanshi! 🎉",
+  "Dipanshi, tum jiyo hazaro saal! Aur har saal mujhe party me aise hi crunchy samosay khilao! 🥳",
   "Khaike samosa, Motu ka dil garden garden ho gaya! Keep shining always Dipanshi! 💖",
   "Patlu ko bolo cake khaye, main toh Dipanshi ke naam ka samosa hi todunga! 🥟✨"
 ];
 let motuQuoteIndex = 0;
 
 function feedMotu() {
-  stopDoraemonSong(); // Stop Doraemon song when interacting with Motu
-  try {
-    const snd = new Audio('media/G ghalti hogai.mp3');
-    snd.volume = 0.85;
-    snd.play().catch(() => {});
-  } catch (e) {}
+  playTeaseTrack('media/chewing.mp3', 0.95);
 
   const bubble = document.querySelector('.motu-bubble');
   motuQuoteIndex = (motuQuoteIndex + 1) % motuQuotes.length;
@@ -831,7 +826,7 @@ function feedMotu() {
 }
 
 const patluQuotes = [
-  "Scientific Fact: Dipanshi is the most amazing, hardworking, and sweetest sister! 🎓💡",
+  "Aaj kamayenga to kal baithkar khayenga! 💼💰 Scientific rule for Dipanshi's golden future!",
   "Idea! Dipanshi ke 6th November par hum sab milkar universe ka sabse bada party karenge! 🚀",
   "Meri calculation ke mutabiq: Dipanshi's future is filled with 100% success & joy! 🌟",
   "Dimaag ki batti keh rahi hai: Dipanshi is born to conquer her dreams! 🌈"
@@ -839,12 +834,7 @@ const patluQuotes = [
 let patluQuoteIndex = 0;
 
 function triggerPatluIdea() {
-  stopDoraemonSong(); // Stop Doraemon song when interacting with Patlu
-  try {
-    const snd = new Audio('media/I am joking.mp3');
-    snd.volume = 0.85;
-    snd.play().catch(() => {});
-  } catch (e) {}
+  playTeaseTrack('media/Voicy_Aaj kamayenga to kal baithkar khayenga.mp3', 0.95);
 
   const bubble = document.querySelector('.patlu-bubble');
   patluQuoteIndex = (patluQuoteIndex + 1) % patluQuotes.length;
