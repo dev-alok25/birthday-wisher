@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Happy Birthday Dipanshi! 🎂✨ Doraemon & Motu Patlu Celebration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&family=Pacifico&family=Bubblegum+Sans&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- 6th November Security Vault & Lock Screen -->
+  <div id="birthdayVaultLock" class="vault-overlay">
+    <div class="vault-box">
+      <div class="vault-icon-wrap">
+        <span class="vault-big-lock">🔐</span>
+        <div class="vault-sparkles">✨</div>
+      </div>
+
+      <div class="vault-badge">TOP SECRET • SURPRISE LOCKED 🔒</div>
+
+      <h1 class="vault-title">Dipanshi's Birthday Vault</h1>
+      <p class="vault-msg">
+        Shhh! No peeking Dipanshi! 🤫<br>
+        This special cartoon birthday surprise is locked with Doraemon's 4D Security until <strong>6th November, 12:00
+          AM Midnight!</strong>
+      </p>
+
+      <!-- Real-time Countdown to Midnight -->
+      <div class="vault-countdown-container">
+        <div class="vault-countdown-title">⏰ Vault Opens Automatically In:</div>
+        <div class="vault-timer">
+          <div class="vault-tblock"><span id="vHours">00</span><small>Hours</small></div>
+          <div class="vault-colon">:</div>
+          <div class="vault-tblock"><span id="vMins">00</span><small>Mins</small></div>
+          <div class="vault-colon">:</div>
+          <div class="vault-tblock"><span id="vSecs">00</span><small>Secs</small></div>
+        </div>
+      </div>
+
+      <!-- Cartoon Guards -->
+      <div class="vault-guards">
+        <div class="guard-pill">🚁 Doraemon is guarding the door!</div>
+        <div class="guard-pill">🥟 "Ruko zara, sabar karo! Pehle 6th Nov aane do!"</div>
+      </div>
+
+      <!-- Action buttons: Sneak Peek & Brother Passcode -->
+      <div class="vault-actions">
+        <button class="vault-btn peek-btn" onclick="trySneakPeek()">
+          👀 Sneak Peek (Dipanshi)
+        </button>
+        <button class="vault-btn pass-btn" onclick="openPasscodePrompt()">
+          🔑 Brother Passcode Unlock
+        </button>
+      </div>
+
+      <!-- Hidden Passcode Input form -->
+      <div id="passcodeArea" class="passcode-area hidden">
+        <p class="passcode-hint">Enter brother's secret key (e.g. <strong>6nov</strong> or <strong>dipanshi</strong>):
+        </p>
+        <div class="passcode-input-row">
+          <input type="password" id="passcodeInput" placeholder="Enter secret code..." onkeyup="checkPasskey(event)">
+          <button class="pass-submit-btn" onclick="submitPasscode()">Unlock</button>
+        </div>
+        <div id="passcodeError" class="passcode-error"></div>
+      </div>
+
+      <div class="vault-footer-note">
+        💡 Website automatically swings open the second the clock strikes 12:00 AM on 6th November!
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen Particle & Fireworks Canvas -->
+  <canvas id="fireworks-canvas"></canvas>
+
+  <!-- Floating Floating Background Balloons Container -->
+  <div id="balloon-container" aria-hidden="true"></div>
+
+  <!-- Audio Control & Top Deluxe Music Toolbar -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <div class="date-badge">
+        <span class="calendar-icon">📅</span>
+        <span class="date-text">6th November Special</span>
+      </div>
+      <div class="now-playing-wrap" id="musicStatusPill">
+        <div class="equalizer-bars" id="eqBars">
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+        </div>
+        <span class="now-playing-title" id="nowPlayingText">Birthday Song 🎂</span>
+      </div>
+      <div class="dev-badge-nav" title="Coded with love & sibling teasing">
+        <span class="dev-badge-dot">●</span> Curious Dev Bro Mode
+      </div>
+    </div>
+
+    <div class="nav-controls">
+      <button id="btn-music" class="pill-btn music-btn pulse-glow" title="Play / Pause Birthday Song">
+        <span class="music-icon" id="musicPlayIcon">🎵</span>
+        <span class="btn-text" id="musicPlayText">Play Birthday Song</span>
+      </button>
+
+      <button id="btn-fireworks" class="pill-btn sparkle-btn" title="Launch Fireworks">
+        <span class="sparkle-icon">🎆</span>
+        <span class="btn-text">Fireworks!</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Flying Doraemon with Bamboo-Copter Banner -->
+  <div class="sky-flyby" id="doraemonFlyby">
+    <div class="doraemon-glider">
+      <!-- Doraemon SVG -->
+      <svg class="doraemon-svg" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+        <!-- Bamboo Copter (Takecopter) -->
+        <g class="bamboo-copter">
+          <rect x="96" y="5" width="8" height="22" rx="4" fill="#f1c40f" stroke="#d4ac0d" stroke-width="2" />
+          <ellipse class="propeller" cx="100" cy="5" rx="55" ry="5" fill="#f39c12" />
+          <circle cx="100" cy="5" r="4" fill="#e67e22" />
+        </g>
+        <!-- Doraemon Head -->
+        <circle cx="100" cy="85" r="62" fill="#0288d1" stroke="#01579b" stroke-width="3" />
+        <!-- Face white background -->
+        <ellipse cx="100" cy="94" rx="48" ry="42" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5" />
+        <!-- Eyes -->
+        <ellipse cx="88" cy="62" rx="12" ry="16" fill="#ffffff" stroke="#2c3e50" stroke-width="2.5" />
+        <ellipse cx="112" cy="62" rx="12" ry="16" fill="#ffffff" stroke="#2c3e50" stroke-width="2.5" />
+        <!-- Pupils -->
+        <circle cx="91" cy="64" r="5" fill="#1a1a1a" />
+        <circle cx="93" cy="62" r="2" fill="#ffffff" />
+        <circle cx="109" cy="64" r="5" fill="#1a1a1a" />
+        <circle cx="111" cy="62" r="2" fill="#ffffff" />
+        <!-- Red Nose -->
+        <circle cx="100" cy="77" r="9" fill="#e74c3c" stroke="#c0392b" stroke-width="2" />
+        <circle cx="97" cy="74" r="3" fill="#ffffff" />
+        <!-- Nose to Mouth Line -->
+        <line x1="100" y1="86" x2="100" y2="114" stroke="#2c3e50" stroke-width="2.5" />
+        <!-- Happy Smile Mouth -->
+        <path d="M 68 106 Q 100 135 132 106" fill="#c0392b" stroke="#2c3e50" stroke-width="2.5" />
+        <path d="M 76 112 Q 100 132 124 112" fill="#e74c3c" />
+        <path d="M 88 120 Q 100 114 112 120 Q 100 130 88 120" fill="#f39c12" />
+        <!-- Whiskers -->
+        <line x1="58" y1="84" x2="88" y2="87" stroke="#2c3e50" stroke-width="2.2" stroke-linecap="round" />
+        <line x1="56" y1="95" x2="86" y2="95" stroke="#2c3e50" stroke-width="2.2" stroke-linecap="round" />
+        <line x1="58" y1="106" x2="88" y2="103" stroke="#2c3e50" stroke-width="2.2" stroke-linecap="round" />
+        <line x1="142" y1="84" x2="112" y2="87" stroke="#2c3e50" stroke-width="2.2" stroke-linecap="round" />
+        <line x1="144" y1="95" x2="114" y2="95" stroke="#2c3e50" stroke-width="2.2" stroke-linecap="round" />
+        <line x1="142" y1="106" x2="112" y2="103" stroke="#2c3e50" stroke-width="2.2" stroke-linecap="round" />
+        <!-- Collar -->
+        <rect x="70" y="137" width="60" height="9" rx="4" fill="#e74c3c" stroke="#c0392b" stroke-width="2" />
+        <!-- Yellow Bell -->
+        <circle cx="100" cy="148" r="9" fill="#f1c40f" stroke="#d4ac0d" stroke-width="2" />
+        <line x1="93" y1="146" x2="107" y2="146" stroke="#b7950b" stroke-width="1.8" />
+        <circle cx="100" cy="151" r="2.5" fill="#333" />
+        <!-- Body -->
+        <path d="M 72 144 Q 56 180 62 205 Q 100 210 138 205 Q 144 180 128 144 Z" fill="#0288d1" stroke="#01579b"
+          stroke-width="3" />
+        <!-- White Belly -->
+        <path d="M 78 146 Q 66 182 78 198 Q 100 204 122 198 Q 134 182 122 146 Z" fill="#ffffff" />
+        <!-- 4D Pocket -->
+        <path d="M 82 165 Q 100 165 118 165 Q 118 190 100 190 Q 82 190 82 165 Z" fill="#ffffff" stroke="#7f8c8d"
+          stroke-width="2" />
+        <!-- Arms with round hands -->
+        <g class="dora-left-hand">
+          <line x1="68" y1="152" x2="44" y2="175" stroke="#0288d1" stroke-width="14" stroke-linecap="round" />
+          <circle cx="40" cy="180" r="12" fill="#ffffff" stroke="#bdc3c7" stroke-width="2" />
+        </g>
+        <g class="dora-right-hand">
+          <line x1="132" y1="152" x2="156" y2="175" stroke="#0288d1" stroke-width="14" stroke-linecap="round" />
+          <circle cx="160" cy="180" r="12" fill="#ffffff" stroke="#bdc3c7" stroke-width="2" />
+        </g>
+        <!-- Feet -->
+        <ellipse cx="80" cy="214" rx="16" ry="8" fill="#ffffff" stroke="#bdc3c7" stroke-width="2" />
+        <ellipse cx="120" cy="214" rx="16" ry="8" fill="#ffffff" stroke="#bdc3c7" stroke-width="2" />
+      </svg>
+      <!-- Trailing Aerial Banner -->
+      <div class="aerial-banner">
+        <span class="plane-string">〰〰〰</span>
+        <div class="banner-box">
+          <span class="banner-text">🎂 Special Birthday Flight for <strong>Dipanshi!</strong> 💖 (6th Nov) 🎈</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Hero Stage -->
+  <main class="main-container">
+
+    <!-- Hero Title Header -->
+    <section class="hero-section">
+      <div class="ribbon-wrapper">
+        <div class="ribbon-banner">🎉 Happy Birthday, pyari bahan😐😐 🎉</div>
+      </div>
+
+      <h1 class="main-title">
+        <span class="title-word glow-pink">Happy</span>
+        <span class="title-word glow-yellow">Birthday</span>
+        <span class="title-word name-highlight rainbow-text">Dipanshi😒</span>
+      </h1>
+
+      <p class="subtitle">
+        🌟 Wishing you an extraordinarily magical day filled with infinite smiles, samosas, and cartoon miracles! (chat
+        gpt se chhapa hai🥲)🌟
+      </p>
+
+      <div class="birthday-date-tag">
+        <span class="sparkle-star">✨</span> 6th November • The Best Day Ever! <span class="sparkle-star">✨</span>
+      </div>
+
+      <!-- Live Birthday Clock & Countdown -->
+      <div class="countdown-card" id="countdownCard">
+        <div class="countdown-header">
+          <span class="clock-icon">⏰</span>
+          <span class="countdown-status" id="countdownStatus">Calculating 6th November Celebration Time...</span>
+        </div>
+        <div class="countdown-timer" id="countdownTimer">
+          <div class="time-block">
+            <span class="time-num" id="timeDays">00</span>
+            <span class="time-label">Days</span>
+          </div>
+          <div class="time-colon">:</div>
+          <div class="time-block">
+            <span class="time-num" id="timeHours">00</span>
+            <span class="time-label">Hours</span>
+          </div>
+          <div class="time-colon">:</div>
+          <div class="time-block">
+            <span class="time-num" id="timeMins">00</span>
+            <span class="time-label">Mins</span>
+          </div>
+          <div class="time-colon">:</div>
+          <div class="time-block">
+            <span class="time-num" id="timeSecs">00</span>
+            <span class="time-label">Secs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cartoon Friends Stage (Motu, Doraemon & Patlu) -->
+    <section class="cartoon-stage">
+      <!-- Motu Character Card -->
+      <div class="character-card motu-card" id="motuCard">
+        <div class="speech-bubble motu-bubble">
+          "Patlu! Dipanshi ka birthday hai! Main toh 100 garam samosay khaunga aur Dipanshi ko best wishes doonga!" 🥟🥳
+        </div>
+        <div class="char-avatar motu-anim">
+          <!-- Motu SVG -->
+          <svg class="motu-svg" viewBox="0 0 180 230" xmlns="http://www.w3.org/2000/svg">
+            <!-- Samosa in hand -->
+            <g class="motu-samosa-float">
+              <polygon points="148,85 174,105 136,118" fill="#d35400" stroke="#a04000" stroke-width="2" />
+              <polygon points="150,88 170,104 140,114" fill="#f39c12" />
+              <circle cx="152" cy="100" r="1.5" fill="#7e5109" />
+              <circle cx="160" cy="104" r="1.5" fill="#7e5109" />
+            </g>
+            <!-- Motu Body / Kurta (Orange/Red) -->
+            <ellipse cx="90" cy="158" rx="44" ry="46" fill="#e67e22" stroke="#d35400" stroke-width="3" />
+            <!-- Big Round Belly Highlight -->
+            <ellipse cx="90" cy="168" rx="34" ry="32" fill="#f39c12" />
+            <!-- Kurta Neckline & Buttons -->
+            <path d="M 82 118 L 90 142 L 98 118" fill="#f1c40f" />
+            <circle cx="90" cy="132" r="2.5" fill="#c0392b" />
+            <circle cx="90" cy="148" r="2.5" fill="#c0392b" />
+            <circle cx="90" cy="164" r="2.5" fill="#c0392b" />
+            <!-- Dhoti / Legs -->
+            <ellipse cx="74" cy="204" rx="14" ry="12" fill="#2980b9" />
+            <ellipse cx="106" cy="204" rx="14" ry="12" fill="#2980b9" />
+            <!-- Brown Shoes -->
+            <ellipse cx="70" cy="216" rx="14" ry="7" fill="#6e2c00" />
+            <ellipse cx="110" cy="216" rx="14" ry="7" fill="#6e2c00" />
+            <!-- Arms -->
+            <path d="M 52 135 Q 30 150 42 170" stroke="#f0b27a" stroke-width="12" stroke-linecap="round" fill="none" />
+            <circle cx="42" cy="170" r="8" fill="#f0b27a" />
+            <!-- Right Arm holding Samosa -->
+            <path d="M 128 135 Q 150 120 148 105" stroke="#f0b27a" stroke-width="12" stroke-linecap="round"
+              fill="none" />
+            <circle cx="146" cy="105" r="8" fill="#f0b27a" />
+            <!-- Motu Head -->
+            <ellipse cx="90" cy="78" rx="35" ry="38" fill="#f0b27a" stroke="#d68910" stroke-width="2.5" />
+            <!-- Little tuft of hair on head -->
+            <path d="M 88 40 Q 82 25 80 18 Q 88 28 92 38" fill="#2c3e50" />
+            <!-- Ears -->
+            <ellipse cx="55" cy="78" rx="6" ry="10" fill="#f0b27a" stroke="#d68910" stroke-width="2" />
+            <ellipse cx="125" cy="78" rx="6" ry="10" fill="#f0b27a" stroke="#d68910" stroke-width="2" />
+            <!-- Eyes -->
+            <ellipse cx="78" cy="68" rx="8" ry="10" fill="#ffffff" stroke="#2c3e50" stroke-width="2" />
+            <ellipse cx="102" cy="68" rx="8" ry="10" fill="#ffffff" stroke="#2c3e50" stroke-width="2" />
+            <circle cx="80" cy="69" r="4" fill="#2c3e50" />
+            <circle cx="100" cy="69" r="4" fill="#2c3e50" />
+            <circle cx="82" cy="67" r="1.5" fill="#ffffff" />
+            <circle cx="102" cy="67" r="1.5" fill="#ffffff" />
+            <!-- Big Bulbous Nose -->
+            <ellipse cx="90" cy="78" rx="8" ry="7" fill="#e59866" stroke="#ba4a00" stroke-width="1.5" />
+            <!-- Famous Thick Mustache -->
+            <path d="M 90 84 Q 72 82 60 92 Q 74 97 90 88 Q 106 97 120 92 Q 108 82 90 84 Z" fill="#212f3d" />
+            <!-- Happy Mouth -->
+            <path d="M 78 94 Q 90 110 102 94" stroke="#c0392b" stroke-width="3" fill="#922b21" />
+            <path d="M 84 96 Q 90 102 96 96" fill="#f1948a" />
+            <!-- Party Hat on Motu -->
+            <polygon points="90,14 74,42 106,42" fill="#9b59b6" stroke="#8e44ad" stroke-width="2" />
+            <circle cx="90" cy="12" r="4" fill="#f1c40f" />
+            <line x1="76" y1="36" x2="104" y2="36" stroke="#f1c40f" stroke-width="2" />
+          </svg>
+        </div>
+        <div class="char-name">Motu</div>
+        <button class="feed-btn" onclick="feedMotu()">🥟 Feed Samosa</button>
+      </div>
+
+      <!-- Center Celebration Doraemon -->
+      <div class="character-card dora-center-card" id="doraCard">
+        <div class="speech-bubble dora-bubble">
+          "Happy Birthday Dipanshi! 🎁 Maine 4D Pocket se specially tumhare liye Happiness Gadgets nikale hain!" 🚪⭐
+        </div>
+        <div class="char-avatar dora-dance-anim">
+          <svg class="doraemon-standing-svg" viewBox="0 0 190 230" xmlns="http://www.w3.org/2000/svg">
+            <!-- Party Hat -->
+            <polygon points="95,10 75,48 115,48" fill="#e74c3c" stroke="#c0392b" stroke-width="2" />
+            <circle cx="95" cy="8" r="5" fill="#f1c40f" />
+            <line x1="78" y1="40" x2="112" y2="40" stroke="#ffffff" stroke-width="2.5" />
+            <!-- Doraemon Head -->
+            <circle cx="95" cy="92" r="54" fill="#0288d1" stroke="#01579b" stroke-width="2.5" />
+            <ellipse cx="95" cy="100" rx="42" ry="38" fill="#ffffff" />
+            <!-- Big Joyful Eyes -->
+            <ellipse cx="84" cy="74" rx="11" ry="14" fill="#ffffff" stroke="#2c3e50" stroke-width="2.2" />
+            <ellipse cx="106" cy="74" rx="11" ry="14" fill="#ffffff" stroke="#2c3e50" stroke-width="2.2" />
+            <!-- Winking Star eye on left -->
+            <path d="M 84 66 L 86 73 L 93 74 L 88 78 L 89 85 L 84 81 L 79 85 L 80 78 L 75 74 L 82 73 Z"
+              fill="#f39c12" />
+            <circle cx="106" cy="76" r="5" fill="#1a1a1a" />
+            <circle cx="108" cy="74" r="2" fill="#ffffff" />
+            <!-- Red Nose -->
+            <circle cx="95" cy="86" r="8" fill="#e74c3c" />
+            <circle cx="92" cy="83" r="2.5" fill="#ffffff" />
+            <line x1="95" y1="94" x2="95" y2="114" stroke="#2c3e50" stroke-width="2" />
+            <!-- Singing / Cheering Open Mouth -->
+            <path d="M 72 108 Q 95 138 118 108 Z" fill="#c0392b" stroke="#2c3e50" stroke-width="2" />
+            <path d="M 82 118 Q 95 110 108 118 Q 95 130 82 118" fill="#e74c3c" />
+            <!-- Whiskers -->
+            <line x1="60" y1="92" x2="84" y2="94" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" />
+            <line x1="58" y1="102" x2="82" y2="102" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" />
+            <line x1="60" y1="112" x2="84" y2="110" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" />
+            <line x1="130" y1="92" x2="106" y2="94" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" />
+            <line x1="132" y1="102" x2="108" y2="102" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" />
+            <line x1="130" y1="112" x2="106" y2="110" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" />
+            <!-- Collar & Bell -->
+            <rect x="68" y="140" width="54" height="8" rx="4" fill="#e74c3c" />
+            <circle cx="95" cy="150" r="8" fill="#f1c40f" stroke="#b7950b" stroke-width="1.8" />
+            <circle cx="95" cy="153" r="2" fill="#333" />
+            <!-- Body -->
+            <path d="M 70 146 Q 58 180 64 200 Q 95 204 126 200 Q 132 180 120 146 Z" fill="#0288d1" stroke="#01579b"
+              stroke-width="2.5" />
+            <path d="M 76 148 Q 66 180 76 195 Q 95 200 114 195 Q 124 180 114 148 Z" fill="#ffffff" />
+            <!-- Pocket with Dorayaki peaking out -->
+            <path d="M 80 165 Q 95 165 110 165 Q 110 186 95 186 Q 80 186 80 165 Z" fill="#ffffff" stroke="#7f8c8d"
+              stroke-width="2" />
+            <ellipse cx="95" cy="165" rx="8" ry="4" fill="#a0522d" />
+            <!-- Waving Hands -->
+            <circle cx="48" cy="156" r="11" fill="#ffffff" stroke="#bdc3c7" stroke-width="2" />
+            <circle cx="142" cy="156" r="11" fill="#ffffff" stroke="#bdc3c7" stroke-width="2" />
+            <!-- Feet -->
+            <ellipse cx="78" cy="208" rx="14" ry="7" fill="#ffffff" stroke="#bdc3c7" stroke-width="2" />
+            <ellipse cx="112" cy="208" rx="14" ry="7" fill="#ffffff" stroke="#bdc3c7" stroke-width="2" />
+          </svg>
+        </div>
+        <div class="char-name">Doraemon</div>
+        <button class="pocket-btn" onclick="openAnywhereDoor()">🚪 Open Anywhere Door</button>
+      </div>
+
+      <!-- Patlu Character Card -->
+      <div class="character-card patlu-card" id="patluCard">
+        <div class="speech-bubble patlu-bubble">
+          "Idea! 💡 Dipanshi ke birthday par meri wisdom aur blessings: May you top every exam and touch the sky!(phir
+          se chatgpt)" 🎓✨
+        </div>
+        <div class="char-avatar patlu-anim">
+          <!-- Patlu SVG -->
+          <svg class="patlu-svg" viewBox="0 0 170 230" xmlns="http://www.w3.org/2000/svg">
+            <!-- Glowing Idea Bulb above Patlu -->
+            <g class="idea-bulb">
+              <circle cx="85" cy="22" r="12" fill="#ffeb3b" stroke="#f39c12" stroke-width="2" />
+              <rect x="81" y="34" width="8" height="5" fill="#bdc3c7" />
+              <line x1="85" y1="5" x2="85" y2="2" stroke="#f39c12" stroke-width="2.5" stroke-linecap="round" />
+              <line x1="68" y1="12" x2="65" y2="9" stroke="#f39c12" stroke-width="2.5" stroke-linecap="round" />
+              <line x1="102" y1="12" x2="105" y2="9" stroke="#f39c12" stroke-width="2.5" stroke-linecap="round" />
+              <text x="81" y="27" font-size="12" font-weight="bold" fill="#e67e22">💡</text>
+            </g>
+            <!-- Patlu Head & Neck -->
+            <rect x="80" y="98" width="10" height="15" fill="#f0b27a" />
+            <!-- Head shape (tall egg-like) -->
+            <ellipse cx="85" cy="68" rx="24" ry="32" fill="#f0b27a" stroke="#d68910" stroke-width="2" />
+            <!-- Three hairs on top -->
+            <path d="M 82 36 Q 84 26 80 18" stroke="#2c3e50" stroke-width="2.5" stroke-linecap="round" fill="none" />
+            <path d="M 85 36 Q 87 24 88 16" stroke="#2c3e50" stroke-width="2.5" stroke-linecap="round" fill="none" />
+            <path d="M 88 36 Q 91 26 95 19" stroke="#2c3e50" stroke-width="2.5" stroke-linecap="round" fill="none" />
+            <!-- Ears -->
+            <ellipse cx="60" cy="70" rx="5" ry="8" fill="#f0b27a" />
+            <ellipse cx="110" cy="70" rx="5" ry="8" fill="#f0b27a" />
+            <!-- Iconic Big Glasses -->
+            <circle cx="76" cy="64" r="10" fill="#ecf0f1" stroke="#2c3e50" stroke-width="2.5" />
+            <circle cx="94" cy="64" r="10" fill="#ecf0f1" stroke="#2c3e50" stroke-width="2.5" />
+            <line x1="86" y1="64" x2="84" y2="64" stroke="#2c3e50" stroke-width="3" />
+            <!-- Eyes through glasses -->
+            <circle cx="77" cy="64" r="3.5" fill="#1a1a1a" />
+            <circle cx="93" cy="64" r="3.5" fill="#1a1a1a" />
+            <!-- Pointed Nose -->
+            <path d="M 85 66 L 81 76 L 85 76" stroke="#ba4a00" stroke-width="1.8" fill="none" />
+            <!-- Smiling Mouth -->
+            <path d="M 76 83 Q 85 91 94 83" stroke="#c0392b" stroke-width="2.5" fill="none" stroke-linecap="round" />
+            <!-- Thin Torso / Yellow Kurta -->
+            <path d="M 66 112 L 104 112 L 98 178 L 72 178 Z" fill="#f1c40f" stroke="#d4ac0d" stroke-width="2.5" />
+            <!-- Brown Pants -->
+            <rect x="73" y="178" width="10" height="34" fill="#795548" />
+            <rect x="87" y="178" width="10" height="34" fill="#795548" />
+            <!-- Black Shoes -->
+            <ellipse cx="76" cy="214" rx="9" ry="5" fill="#212121" />
+            <ellipse cx="94" cy="214" rx="9" ry="5" fill="#212121" />
+            <!-- Thin Arms - Left waving, Right on hip -->
+            <path d="M 66 116 Q 48 130 52 145" stroke="#f1c40f" stroke-width="8" stroke-linecap="round" fill="none" />
+            <circle cx="52" cy="148" r="6" fill="#f0b27a" />
+            <path d="M 104 116 Q 124 105 116 88" stroke="#f1c40f" stroke-width="8" stroke-linecap="round" fill="none" />
+            <circle cx="116" cy="86" r="6" fill="#f0b27a" />
+          </svg>
+        </div>
+        <div class="char-name">Patlu</div>
+        <button class="patlu-btn" onclick="triggerPatluIdea()">💡 Patlu's Advice</button>
+      </div>
+    </section>
+
+    <!-- Interactive Birthday Cake Section -->
+    <section class="cake-section">
+      <div class="section-title-wrap">
+        <h2 class="section-title">🎂 Make a Wish, Dipanshi! 🕯️</h2>
+        <p class="section-subtitle">Click the glowing candles or the button below to blow them out and make your 6th
+          November wish!</p>
+      </div>
+
+      <div class="cake-display-area">
+        <div class="cake-pedestal"></div>
+        <div class="birthday-cake" id="cakeContainer" onclick="blowCandles()">
+          <!-- Candle Flames -->
+          <div class="candles-row">
+            <div class="candle c1">
+              <div class="flame" id="flame1"></div>
+              <div class="wick"></div>
+              <div class="candle-stick stripe-pink"></div>
+            </div>
+            <div class="candle c2 center-candle">
+              <div class="flame" id="flame2"></div>
+              <div class="wick"></div>
+              <div class="candle-stick stripe-gold"></div>
+            </div>
+            <div class="candle c3">
+              <div class="flame" id="flame3"></div>
+              <div class="wick"></div>
+              <div class="candle-stick stripe-blue"></div>
+            </div>
+          </div>
+
+          <!-- Top Tier -->
+          <div class="cake-tier tier-top">
+            <div class="frosting-drippings"></div>
+            <div class="berries-row">
+              <span class="berry">🍓</span>
+              <span class="berry">🍒</span>
+              <span class="berry">🍓</span>
+              <span class="berry">🍒</span>
+            </div>
+            <span class="tier-text">DIPANSHI</span>
+          </div>
+
+          <!-- Bottom Tier -->
+          <div class="cake-tier tier-bottom">
+            <div class="frosting-layer"></div>
+            <div class="cake-decorations">
+              <span class="star-deco">⭐</span>
+              <span class="star-deco">💖</span>
+              <span class="star-deco">6th Nov</span>
+              <span class="star-deco">💖</span>
+              <span class="star-deco">⭐</span>
+            </div>
+          </div>
+
+          <!-- Cake Plate -->
+          <div class="cake-plate"></div>
+        </div>
+      </div>
+
+      <div class="cake-actions">
+        <button id="btn-blow-candles" class="glow-button" onclick="blowCandles()">
+          💨 Blow the Candles & Make a Wish!
+        </button>
+        <div id="wish-message" class="hidden-wish">
+          🎊 WISH GRANTED! May your 16th/every year shine brighter than a thousand galaxies, Dipanshi! 💖✨
+        </div>
+      </div>
+    </section>
+
+    <!-- Doraemon's Anywhere Door Interactive Modal -->
+    <div id="anywhereDoorModal" class="door-modal hidden">
+      <div class="door-backdrop" onclick="closeAnywhereDoor()"></div>
+      <div class="door-frame">
+        <button class="door-close-btn" onclick="closeAnywhereDoor()">✕ Close</button>
+        <div class="door-exterior">
+          <div class="pink-door" id="pinkDoor" onclick="toggleDoorOpen()">
+            <div class="door-knob"></div>
+            <div class="door-label">ANYWHERE DOOR<br><span>(Destination: Dipanshi's Dreams)</span></div>
+          </div>
+          <!-- Revealed Wonderland inside the door -->
+          <div class="door-inside">
+            <div class="portal-content">
+              <h3>🌸 Welcome to Wonderland, Dipanshi! 🌸</h3>
+              <p class="portal-quote">
+                "No matter how far you go or what dreams you chase, you will always have happiness, success, and your
+                family cheering the loudest for you!(phir chatgpt)"
+              </p>
+              <div class="portal-gadgets">
+                <div class="gadget-item">
+                  <span class="gadget-emoji">🍞</span>
+                  <strong>Memory Bread:</strong> Never forget how loved and special you are!
+                </div>
+                <div class="gadget-item">
+                  <span class="gadget-emoji">🚁</span>
+                  <strong>Bamboo Copter:</strong> Always soar high above every difficulty!
+                </div>
+                <div class="gadget-item">
+                  <span class="gadget-emoji">⏳</span>
+                  <strong>Time Cloth:</strong> May your youth, joy, and innocence stay timeless!
+                </div>
+              </div>
+              <button class="door-action-btn" onclick="celebrateFromDoor()">🎉 Celebrate Now!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Surprise Gift Box -->
+    <section class="gift-section">
+      <h2 class="section-title">🎁 Dipanshi's Mystery Surprise Box</h2>
+      <p class="section-subtitle">Click to untie the ribbon and unwrap a special sister tribute!</p>
+
+      <div class="gift-box-wrapper" onclick="openGiftBox()">
+        <div class="gift-box" id="giftBox">
+          <div class="gift-bow">
+            <div class="bow-left"></div>
+            <div class="bow-right"></div>
+            <div class="bow-center"></div>
+          </div>
+          <div class="gift-lid" id="giftLid"></div>
+          <div class="gift-body">
+            <div class="ribbon-vertical"></div>
+            <div class="ribbon-horizontal"></div>
+            <span class="tap-hint">Tap to Open! 🌟</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secret Sister Message Revealed from Box -->
+      <div class="surprise-letter hidden" id="surpriseLetter">
+        <div class="letter-card">
+          <div class="letter-stamp">6 Nov 💌</div>
+          <h3 class="letter-greeting">Dearest Sister Dipanshi, ❤️</h3>
+          <p class="letter-body">
+            Today on <strong>6th November</strong>, the world became a brighter, funnier, and lovelier place because you
+            were born!
+          </p>
+          <p class="letter-body">
+            From playful arguments over TV remotes and snacks to sharing non-stop laughter and secrets—having you as a
+            sister is the greatest gift. You bring so much energy, kindness, and happiness wherever you go.
+          </p>
+          <p class="letter-body">
+            Just like Doraemon always stands by Nobita, and Motu & Patlu conquer every adventure together—I will always
+            stand by you, supporting your biggest dreams and cheering for your victories.
+          </p>
+          <div class="letter-highlight">
+            ✨ May this year bring you top marks, endless happiness, crazy adventures, and all the chocolate you desire!
+            ✨
+          </div>
+          <div class="letter-signature">
+            With endless love & wishes,<br>
+            <strong>Your Forever Loving Family & Brother (CHATGPT 😎)</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Samosa Catcher Mini-Game (Motu's Favorite!) -->
+    <section class="minigame-section">
+      <div class="game-header">
+        <h2 class="game-title">🥟 Motu's Birthday Samosa Frenzy! 🥟</h2>
+        <p class="game-sub">Catch falling samosas for Dipanshi's birthday party score!</p>
+        <div class="scoreboard">
+          <span>Party Samosas Caught: <strong id="scoreDisplay">0</strong> 🥟</span>
+          <button id="btn-start-game" class="mini-btn" onclick="startSamosaRain()">Catch More Samosas!</button>
+        </div>
+      </div>
+      <div class="game-arena" id="gameArena">
+        <div class="arena-motu" id="catcherMotu">
+          <span class="catcher-avatar">😋🥟</span>
+          <span class="catcher-label">Motu's Tummy</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo Memory Frame Section -->
+    <section class="memories-section">
+      <h2 class="section-title">📸 Picture Perfect Memories</h2>
+      <p class="section-subtitle">Celebrating Birthday Queen Dipanshi & Her most intelegent,advanced,curious Full-Stack
+        software developer Brother😎😎😎</p>
+
+      <div class="duo-showcase">
+        <!-- Dipanshi's Frame -->
+        <div class="polaroid-frame sister-frame">
+          <div class="frame-crown">👑</div>
+          <div class="polaroid-inner">
+            <img src="media/dipanshi.jpeg" class="custom-photo" alt="Birthday Queen Dipanshi"
+              onerror="this.onerror=null; this.src='media/dipanshi.jpeg';">
+          </div>
+          <div class="polaroid-caption">
+            <strong>✨ Birthday Queen Dipanshi ✨</strong>
+            <span class="sub-caption">6th November • Born to Shine 🌟</span>
+          </div>
+          <button class="tease-btn tb-wow" onclick="triggerTease('wow')">
+            💖 "Bhaiya, do I look nice today?" 💬
+          </button>
+        </div>
+
+        <!-- Brother's Curious Dev Frame -->
+        <div class="polaroid-frame brother-frame">
+          <div class="frame-badge">💻 CURIOUS DEV BROTHER</div>
+          <div class="polaroid-inner">
+            <img src="media/me.jpeg" class="custom-photo" alt="Curious Developer Brother"
+              onerror="this.onerror=null; this.src='media/me.jpeg';">
+          </div>
+          <div class="polaroid-caption">
+            <strong>The Developer Behind The Screen 👨‍💻</strong>
+            <span class="sub-caption">Coded an entire universe for sister! ❤️</span>
+          </div>
+          <!-- Mini code terminal -->
+          <div class="dev-terminal-pill">
+            <code>&gt; while(sister) { tease(Dipanshi); }</code>
+          </div>
+          <button class="tease-btn tb-galti" onclick="triggerTease('galti')">
+            🥺 "Demand Apology from Bhaiya" 📜
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Curious Dev Bro's Secret Teasing Zone -->
+    <section class="tease-playground-section">
+      <div class="section-title-wrap">
+        <div class="dev-tag-pill">👨‍💻 BROTHER'S PRANK MATRIX 😈</div>
+        <h2 class="section-title">Dipanshi's Unexpected Teasing Zone!</h2>
+        <p class="section-subtitle">
+          Warning Dipanshi: Your developer brother coded special traps behind these buttons! Press at your own risk! ⚡
+        </p>
+      </div>
+
+      <div class="tease-cards-grid">
+        <!-- Trap 1: Cash Gift -->
+        <div class="prank-card card-gift" onclick="triggerTease('cash')">
+          <div class="prank-badge">TEMPTING 💸</div>
+          <span class="prank-emoji">🎁</span>
+          <h3 class="prank-title">Claim Brother's Cash Gift (₹50,000)</h3>
+          <p class="prank-sub">Direct bank transfer from bhaiya's wallet</p>
+          <button class="trap-action-btn">Transfer to Account 💳</button>
+        </div>
+
+        <!-- Trap 2: Top Secret Dev Button -->
+        <div class="prank-card card-warning" onclick="triggerTease('deva')">
+          <div class="prank-badge badge-danger">FORBIDDEN 🚫</div>
+          <span class="prank-emoji">🚨</span>
+          <h3 class="prank-title">DO NOT TOUCH THIS BUTTON</h3>
+          <p class="prank-sub">Seriously Dipanshi, do not press it!</p>
+          <button class="trap-action-btn btn-danger">🚫 Don't Touch!</button>
+        </div>
+
+        <!-- Trap 3: Runaway IQ Test -->
+        <div class="prank-card card-iq">
+          <div class="prank-badge badge-info">LOGIC TEST 🧠</div>
+          <span class="prank-emoji">👑</span>
+          <h3 class="prank-title">Who is the Smarter Sibling?</h3>
+          <p class="prank-sub">Select the truthful answer:</p>
+          <div class="iq-buttons-wrap">
+            <button id="runawayDipanshiBtn" class="trap-iq-btn btn-runaway" onmouseenter="runawayButton(this)"
+              onclick="runawayButton(this)">
+              Dipanshi 👧
+            </button>
+            <button class="trap-iq-btn btn-brother" onclick="triggerTease('brother_smart')">
+              Brother 👨‍💻
+            </button>
+          </div>
+          <span class="runaway-hint" id="runawayHint">(Try clicking Dipanshi if you can! 😜)</span>
+        </div>
+
+        <!-- Trap 4: Snack Peace Treaty -->
+        <div class="prank-card card-snack" onclick="triggerTease('snack')">
+          <div class="prank-badge badge-treaty">PEACE TREATY 🍫</div>
+          <span class="prank-emoji">🍕</span>
+          <h3 class="prank-title">"I Won't Eat Your Snacks"</h3>
+          <p class="prank-sub">Brother's legally binding snack treaty</p>
+          <button class="trap-action-btn">Sign Contract ✍️</button>
+        </div>
+      </div>
+
+      <!-- Dynamic Teasing Reaction Modal / Dialog -->
+      <div id="teaseDialog" class="tease-dialog hidden">
+        <div class="tease-dialog-backdrop" onclick="closeTeaseDialog()"></div>
+        <div class="tease-dialog-content" id="teaseDialogContent">
+          <span class="tease-dialog-icon" id="tdIcon">😂</span>
+          <h3 class="tease-dialog-title" id="tdTitle">Caught in the Act!</h3>
+          <p class="tease-dialog-msg" id="tdMsg">Message goes here</p>
+          <button class="tease-dialog-btn" onclick="closeTeaseDialog()">Got it, Bhaiya! 🏃‍♀️</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wishes Wall & Messages -->
+    <section class="wishes-wall">
+      <h2 class="section-title">💌 6th November Special Greetings</h2>
+      <div class="wishes-grid">
+        <div class="wish-item item-1">
+          <div class="wish-badge">🎁 Doraemon's Wish</div>
+          <p>"Agar mere pass time-machine ho, toh main saare saal tumhara birthday celebrate karun! Have the bestest
+            birthday Dipanshi!"</p>
+        </div>
+        <div class="wish-item item-2">
+          <div class="wish-badge">🥟 Motu's Wish</div>
+          <p>"Khali pet toh dimaag ki batti nahi jalti, par Dipanshi ke birthday par har koi khushi se jhoomega! Lots of
+            Samosas and love!"</p>
+        </div>
+        <div class="wish-item item-3">
+          <div class="wish-badge">💡 Patlu's Wish</div>
+          <p>"Meri scientific calculation kehti hai ki Dipanshi is 100% smart, 100% wonderful, and 200% best sister
+            ever!"</p>
+        </div>
+        <div class="wish-item item-4">
+          <div class="wish-badge">⭐ Forever Blessing</div>
+          <p>"May your smile remain as bright and contagious as today, throughout every single day of the coming year.
+            Happy Birthday!"</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="birthday-footer">
+      <div class="footer-balloons">🎈 🎂 🎁 💖 🌟 🥟 🚁</div>
+      <p>Crafted with endless love & laughter for <strong>Dipanshi</strong> on <strong>6th November</strong></p>
+      <p class="footer-sub">No backend required • 100% pure browser joy • Play, Celebrate & Smile!</p>
+      <p><strong>Bahut mehnat lagi 🥲🙄🥱</strong></p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
