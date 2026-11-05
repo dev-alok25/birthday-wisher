@@ -37,267 +37,344 @@ body {
   background-attachment: fixed;
 }
 
-/* ================= 6th November Security Vault Screen ================= */
-.vault-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 99999;
-  background: radial-gradient(circle at center, #2c3e50 0%, #1a252f 70%, #0d131a 100%);
-  display: flex;
+/* ================= Today's Birthday Banner ================= */
+.today-bday-banner {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 16px;
-  overflow-y: auto;
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  gap: 10px;
+  background: linear-gradient(135deg, #ff4081, #ff80ab);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-family: var(--font-bubble);
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
+  margin-top: 20px;
+  box-shadow: 0 8px 24px rgba(255, 64, 129, 0.35);
+  animation: pulseBadge 2.5s infinite ease-in-out;
 }
 
-.vault-overlay.unlocked {
-  opacity: 0;
-  transform: scale(1.1);
+.bday-balloon-icon {
+  font-size: 1.35rem;
+}
+
+/* ================= Special Feedback Section for Developer Brother ================= */
+.feedback-section {
+  background: var(--card-bg);
+  border-radius: 35px;
+  padding: 40px 28px;
+  text-align: center;
+  box-shadow: 0 14px 40px rgba(255, 64, 129, 0.15);
+  margin-bottom: 60px;
+  border: 3px solid #ff80ab;
+  position: relative;
+  overflow: hidden;
+}
+
+.feedback-section::before {
+  content: "💌";
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  font-size: 5rem;
+  opacity: 0.12;
+  transform: rotate(20deg);
   pointer-events: none;
 }
 
-.vault-box {
-  background: rgba(255, 255, 255, 0.96);
-  border-radius: 32px;
-  max-width: 540px;
-  width: 100%;
-  padding: 32px 24px;
-  text-align: center;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 64, 129, 0.35);
-  border: 4px solid #ff4081;
-  position: relative;
-  animation: vaultFloat 3s ease-in-out infinite alternate;
+.feedback-container {
+  max-width: 720px;
+  margin: 0 auto;
 }
 
-@keyframes vaultFloat {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-8px); }
+.feedback-header {
+  margin-bottom: 24px;
 }
 
-.vault-icon-wrap {
-  position: relative;
+.feedback-badge {
   display: inline-block;
-  margin-bottom: 8px;
-}
-
-.vault-big-lock {
-  font-size: 4.5rem;
-  display: inline-block;
-  animation: lockShake 2s infinite ease-in-out;
-}
-
-@keyframes lockShake {
-  0%, 100% { transform: rotate(0deg); }
-  15% { transform: rotate(-8deg); }
-  30% { transform: rotate(8deg); }
-  45% { transform: rotate(0deg); }
-}
-
-.vault-sparkles {
-  position: absolute;
-  top: -5px;
-  right: -10px;
-  font-size: 1.8rem;
-  animation: pulseBadge 1.5s infinite;
-}
-
-.vault-badge {
-  display: inline-block;
-  background: #d81b60;
+  background: linear-gradient(135deg, #d81b60, #ff4081);
   color: white;
   font-family: var(--font-bubble);
   font-size: 0.85rem;
-  padding: 4px 16px;
+  padding: 5px 18px;
   border-radius: 50px;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
-  box-shadow: 0 4px 10px rgba(216, 27, 96, 0.3);
-}
-
-.vault-title {
-  font-family: var(--font-bubble);
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
-  color: #1a237e;
+  letter-spacing: 0.8px;
   margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(216, 27, 96, 0.3);
 }
 
-.vault-msg {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #424242;
-  margin-bottom: 20px;
-}
-
-.vault-msg strong {
-  color: #e91e63;
-}
-
-.vault-countdown-container {
-  background: linear-gradient(135deg, #fff3e0, #ffe082);
-  border: 2px dashed #f57c00;
-  border-radius: 20px;
-  padding: 14px 16px;
-  margin-bottom: 20px;
-}
-
-.vault-countdown-title {
+.feedback-title {
   font-family: var(--font-bubble);
-  color: #e65100;
-  font-size: 1rem;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  color: #1a237e;
   margin-bottom: 8px;
 }
 
-.vault-timer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+.feedback-subtitle {
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.vault-tblock {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 6px 14px;
-  min-width: 58px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+/* Reaction selection */
+.reaction-picker-wrap {
+  margin: 22px 0 16px;
+  text-align: left;
 }
 
-.vault-tblock span {
-  font-family: var(--font-bubble);
-  font-size: 1.8rem;
-  color: #d84315;
-  line-height: 1;
-}
-
-.vault-tblock small {
-  font-size: 0.7rem;
+.picker-label {
+  display: block;
   font-weight: 800;
-  text-transform: uppercase;
-  color: #8d6e63;
-  margin-top: 2px;
+  font-size: 0.92rem;
+  color: #c2185b;
+  margin-bottom: 8px;
 }
 
-.vault-colon {
-  font-family: var(--font-bubble);
-  font-size: 1.6rem;
-  color: #e65100;
-  margin-bottom: 10px;
+.reactions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
 }
 
-.vault-guards {
+.reaction-card {
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 18px;
+  padding: 12px 10px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 20px;
-}
-
-.guard-pill {
-  background: #e1f5fe;
-  border: 1px solid #81d4fa;
-  color: #0277bd;
-  font-weight: 700;
-  font-size: 0.88rem;
-  padding: 6px 12px;
-  border-radius: 50px;
-}
-
-.vault-actions {
-  display: flex;
-  gap: 12px;
+  align-items: center;
   justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  font-family: var(--font-body);
+}
+
+.reaction-card:hover {
+  transform: translateY(-3px);
+  border-color: #ff4081;
+  box-shadow: 0 6px 16px rgba(255, 64, 129, 0.2);
+}
+
+.reaction-card.active {
+  background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+  border-color: #ff4081;
+  box-shadow: 0 6px 18px rgba(255, 64, 129, 0.28);
+  transform: scale(1.02);
+}
+
+.r-emoji {
+  font-size: 2rem;
+}
+
+.r-text {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #2c3e50;
+  text-align: center;
+}
+
+/* Quick tag chips */
+.quick-tags-wrap {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.tags-cloud {
+  display: flex;
   flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-chip {
+  background: #f3e5f5;
+  border: 1.5px solid #ce93d8;
+  color: #6a1b9a;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-body);
+}
+
+.tag-chip:hover {
+  background: #ab47bc;
+  color: white;
+  border-color: #ab47bc;
+  transform: translateY(-2px);
+}
+
+/* Feedback Form */
+.feedback-form {
+  background: #ffffff;
+  border: 2px solid #ffcdd2;
+  border-radius: 24px;
+  padding: 24px 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 16px;
   margin-bottom: 16px;
 }
 
-.vault-btn {
-  padding: 10px 18px;
-  border-radius: 50px;
-  border: none;
-  font-family: var(--font-body);
-  font-weight: 800;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.peek-btn {
-  background: linear-gradient(135deg, #ff9800, #f57c00);
-  color: white;
-}
-
-.pass-btn {
-  background: linear-gradient(135deg, #0288d1, #01579b);
-  color: white;
-}
-
-.vault-btn:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.08);
-}
-
-.passcode-area {
-  background: #f5f5f5;
-  border-radius: 14px;
-  padding: 12px;
+.input-field-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   margin-bottom: 14px;
-  animation: popIn 0.3s ease-out;
 }
 
-.passcode-area.hidden {
+.input-field-wrap label {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #455a64;
+}
+
+.input-field-wrap input[type="text"],
+.input-field-wrap textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 2px solid #cfd8dc;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: #263238;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.input-field-wrap input[type="text"]:focus,
+.input-field-wrap textarea:focus {
+  border-color: #ff4081;
+  box-shadow: 0 0 0 3px rgba(255, 64, 129, 0.15);
+}
+
+.input-field-wrap textarea {
+  resize: vertical;
+  min-height: 95px;
+}
+
+.email-display-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #e8f5e9;
+  border: 2px dashed #66bb6a;
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: #1b5e20;
+  gap: 8px;
+}
+
+.copy-email-btn {
+  background: #43a047;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.copy-email-btn:hover {
+  background: #2e7d32;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.send-feedback-btn {
+  background: linear-gradient(135deg, #e91e63, #ff4081);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-weight: 900;
+  font-size: 1.05rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(233, 30, 99, 0.35);
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.send-feedback-btn:hover {
+  transform: translateY(-2px scale(1.02);
+  box-shadow: 0 12px 30px rgba(233, 30, 99, 0.45);
+}
+
+.send-feedback-btn:active {
+  transform: translateY(1px);
+}
+
+/* Success notification banner */
+.fb-success-box {
+  margin-top: 20px;
+  background: linear-gradient(135deg, #e8f8f5, #e0f2f1);
+  border: 3px solid #4db6ac;
+  border-radius: 20px;
+  padding: 22px 18px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 150, 136, 0.2);
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.fb-success-box.hidden {
   display: none;
 }
 
-.passcode-hint {
-  font-size: 0.82rem;
-  color: #616161;
+.fb-success-icon {
+  font-size: 2.8rem;
+  display: block;
   margin-bottom: 8px;
 }
 
-.passcode-input-row {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
+.fb-success-content h3 {
+  font-family: var(--font-bubble);
+  color: #00796b;
+  font-size: 1.35rem;
+  margin-bottom: 6px;
 }
 
-#passcodeInput {
-  padding: 8px 14px;
-  border-radius: 50px;
-  border: 2px solid #ce93d8;
-  outline: none;
-  font-family: var(--font-body);
-  font-weight: 700;
-  width: 170px;
+.fb-success-content p {
+  color: #37474f;
+  font-size: 0.95rem;
+  margin-bottom: 14px;
 }
 
-.pass-submit-btn {
-  background: #2e7d32;
+.fb-ok-btn {
+  background: #00897b;
   color: white;
   border: none;
-  padding: 8px 16px;
+  padding: 8px 22px;
   border-radius: 50px;
   font-weight: 800;
+  font-size: 0.9rem;
   cursor: pointer;
-}
-
-.passcode-error {
-  color: #d32f2f;
-  font-size: 0.82rem;
-  font-weight: 700;
-  margin-top: 6px;
-  min-height: 18px;
-}
-
-.vault-footer-note {
-  font-size: 0.8rem;
-  color: #757575;
+  box-shadow: 0 4px 12px rgba(0, 137, 123, 0.3);
 }
 
 /* Canvas overlay for fireworks */
@@ -2680,102 +2757,27 @@ body {
     padding: 10px 16px;
   }
 
-  /* 6th November Security Vault Screen */
-  .vault-overlay {
-    padding: 12px 8px;
+  /* Special Feedback Section */
+  .feedback-section {
+    padding: 28px 14px;
+    border-radius: 24px;
+    margin-bottom: 35px;
   }
 
-  .vault-box {
-    padding: 22px 12px;
-    border-radius: 22px;
-    max-height: 94vh;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    border-width: 3px;
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
-  .vault-big-lock {
-    font-size: 3.2rem;
+  .reactions-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
 
-  .vault-badge {
-    font-size: 0.74rem;
-    padding: 3px 12px;
-    letter-spacing: 0.5px;
-  }
-
-  .vault-title {
-    font-size: 1.45rem;
-    line-height: 1.25;
-  }
-
-  .vault-msg {
-    font-size: 0.88rem;
-    line-height: 1.45;
-    margin-bottom: 14px;
-  }
-
-  .vault-countdown-container {
-    padding: 10px;
-    margin-bottom: 14px;
-    border-radius: 14px;
-  }
-
-  .vault-countdown-title {
-    font-size: 0.88rem;
-    margin-bottom: 6px;
-  }
-
-  .vault-timer {
-    gap: 6px;
-  }
-
-  .vault-tblock {
-    min-width: 44px;
-    padding: 4px 6px;
-    border-radius: 8px;
-  }
-
-  .vault-tblock span {
-    font-size: 1.3rem;
-  }
-
-  .vault-tblock small {
-    font-size: 0.58rem;
-  }
-
-  .vault-colon {
-    font-size: 1.1rem;
-  }
-
-  .guard-tag {
-    font-size: 0.72rem;
-    padding: 4px 8px;
-  }
-
-  .passcode-form {
-    display: flex;
-    flex-direction: row;
-    gap: 6px;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .pass-input {
-    width: 125px;
-    padding: 8px 10px;
-    font-size: 0.82rem;
-  }
-
-  .pass-submit-btn {
-    padding: 8px 12px;
-    font-size: 0.82rem;
-    min-height: 38px;
-  }
-
-  .sneak-peek-btn {
-    font-size: 0.82rem;
-    padding: 8px 12px;
+  .send-feedback-btn {
+    font-size: 0.92rem;
+    padding: 12px 16px;
+    min-height: 48px;
   }
 
   /* Wishes Wall & Footer */
@@ -2821,18 +2823,5 @@ body {
     padding: 6px 8px;
   }
 
-  .passcode-form {
-    flex-direction: column;
-    align-items: center;
-  }
 
-  .pass-input {
-    width: 100%;
-    max-width: 160px;
-  }
-
-  .pass-submit-btn {
-    width: 100%;
-    max-width: 160px;
-  }
 }

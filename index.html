@@ -15,69 +15,7 @@
 
 <body>
 
-  <!-- 6th November Security Vault & Lock Screen -->
-  <div id="birthdayVaultLock" class="vault-overlay">
-    <div class="vault-box">
-      <div class="vault-icon-wrap">
-        <span class="vault-big-lock">🔐</span>
-        <div class="vault-sparkles">✨</div>
-      </div>
-
-      <div class="vault-badge">TOP SECRET • SURPRISE LOCKED 🔒</div>
-
-      <h1 class="vault-title">Dipanshi's Birthday Vault</h1>
-      <p class="vault-msg">
-        Shhh! No peeking Dipanshi! 🤫<br>
-        This special cartoon birthday surprise is locked with Doraemon's 4D Security until <strong>6th November, 12:00
-          AM Midnight!</strong>
-      </p>
-
-      <!-- Real-time Countdown to Midnight -->
-      <div class="vault-countdown-container">
-        <div class="vault-countdown-title">⏰ Vault Opens Automatically In:</div>
-        <div class="vault-timer">
-          <div class="vault-tblock"><span id="vHours">00</span><small>Hours</small></div>
-          <div class="vault-colon">:</div>
-          <div class="vault-tblock"><span id="vMins">00</span><small>Mins</small></div>
-          <div class="vault-colon">:</div>
-          <div class="vault-tblock"><span id="vSecs">00</span><small>Secs</small></div>
-        </div>
-      </div>
-
-      <!-- Cartoon Guards -->
-      <div class="vault-guards">
-        <div class="guard-pill">🚁 Doraemon is guarding the door!</div>
-        <div class="guard-pill">🥟 "Ruko zara, sabar karo! Pehle 6th Nov aane do!"</div>
-      </div>
-
-      <!-- Action buttons: Sneak Peek & Brother Passcode -->
-      <div class="vault-actions">
-        <button class="vault-btn peek-btn" onclick="trySneakPeek()">
-          👀 Sneak Peek (Dipanshi)
-        </button>
-        <button class="vault-btn pass-btn" onclick="openPasscodePrompt()">
-          🔑 Brother Passcode Unlock
-        </button>
-      </div>
-
-      <!-- Hidden Passcode Input form -->
-      <div id="passcodeArea" class="passcode-area hidden">
-        <p class="passcode-hint">Enter brother's secret key (e.g. <strong>6nov</strong> or <strong>dipanshi</strong>):
-        </p>
-        <div class="passcode-input-row">
-          <input type="password" id="passcodeInput" placeholder="Enter secret code..." onkeyup="checkPasskey(event)">
-          <button class="pass-submit-btn" onclick="submitPasscode()">Unlock</button>
-        </div>
-        <div id="passcodeError" class="passcode-error"></div>
-      </div>
-
-      <div class="vault-footer-note">
-        💡 Website automatically swings open the second the clock strikes 12:00 AM on 6th November!
-      </div>
-    </div>
-  </div>
-
-  <!-- Fullscreen Particle & Fireworks Canvas -->
+<!-- Fullscreen Particle & Fireworks Canvas -->
   <canvas id="fireworks-canvas"></canvas>
 
   <!-- Floating Floating Background Balloons Container -->
@@ -97,7 +35,7 @@
           <span class="eq-bar"></span>
           <span class="eq-bar"></span>
         </div>
-        <span class="now-playing-title" id="nowPlayingText">Birthday Song 🎂</span>
+        <span class="now-playing-title" id="nowPlayingText">Birthday Song (20s) 🎂</span>
       </div>
       <div class="dev-badge-nav" title="Coded with love & sibling teasing">
         <span class="dev-badge-dot">●</span> Curious Dev Bro Mode
@@ -216,34 +154,11 @@
       <div class="birthday-date-tag">
         <span class="sparkle-star">✨</span> 6th November • The Best Day Ever! <span class="sparkle-star">✨</span>
       </div>
-
-      <!-- Live Birthday Clock & Countdown -->
-      <div class="countdown-card" id="countdownCard">
-        <div class="countdown-header">
-          <span class="clock-icon">⏰</span>
-          <span class="countdown-status" id="countdownStatus">Calculating 6th November Celebration Time...</span>
-        </div>
-        <div class="countdown-timer" id="countdownTimer">
-          <div class="time-block">
-            <span class="time-num" id="timeDays">00</span>
-            <span class="time-label">Days</span>
-          </div>
-          <div class="time-colon">:</div>
-          <div class="time-block">
-            <span class="time-num" id="timeHours">00</span>
-            <span class="time-label">Hours</span>
-          </div>
-          <div class="time-colon">:</div>
-          <div class="time-block">
-            <span class="time-num" id="timeMins">00</span>
-            <span class="time-label">Mins</span>
-          </div>
-          <div class="time-colon">:</div>
-          <div class="time-block">
-            <span class="time-num" id="timeSecs">00</span>
-            <span class="time-label">Secs</span>
-          </div>
-        </div>
+      <!-- Today's Birthday Celebration Banner -->
+      <div class="today-bday-banner">
+        <span class="bday-balloon-icon">🎈</span>
+        <span>Today is Dipanshi's Big Day! Let the celebrations begin! 🎂✨</span>
+        <span class="bday-balloon-icon">🎈</span>
       </div>
     </section>
 
@@ -750,6 +665,95 @@
           <p>"May your smile remain as bright and contagious as today, throughout every single day of the coming year.
             Happy Birthday!"</p>
         </div>
+      </div>
+    </section>
+
+
+    <!-- Special Feedback Section for Developer Brother Alok -->
+    <section class="feedback-section" id="feedbackSection">
+      <div class="feedback-container">
+        <div class="feedback-header">
+          <div class="feedback-badge">💌 SECRET NOTE TO DEVELOPER 👨‍💻</div>
+          <h2 class="feedback-title">Rate Your Surprise & Message Bhaiya!</h2>
+          <p class="feedback-subtitle">
+            Kaisa laga 6th November birthday surprise Dipanshi? Share your review directly with your developer brother!
+            (Taarif ya shikayat, jo bhi ho likh do! 😂❤️)
+          </p>
+        </div>
+
+        <!-- Reaction selection -->
+        <div class="reaction-picker-wrap">
+          <span class="picker-label">Choose your reaction:</span>
+          <div class="reactions-grid" id="reactionGrid">
+            <button type="button" class="reaction-card active" data-rating="⭐⭐⭐⭐⭐ 10/10 Best Brother in the Universe! 🥹💖">
+              <span class="r-emoji">🥹</span>
+              <span class="r-text">10/10 Best Bro!</span>
+            </button>
+            <button type="button" class="reaction-card" data-rating="🎂 Super Magical Cartoon Surprise! Loved It! ✨">
+              <span class="r-emoji">🎂</span>
+              <span class="r-text">Super Magical!</span>
+            </button>
+            <button type="button" class="reaction-card" data-rating="🥟 Motu's Samosa Party Was Pure Gold! 🥟🎉">
+              <span class="r-emoji">🥟</span>
+              <span class="r-text">Samosa Love!</span>
+            </button>
+            <button type="button" class="reaction-card" data-rating="😤 You Teased Me Too Much Bhaiya! Where is my ₹50,000? 💸">
+              <span class="r-emoji">😤</span>
+              <span class="r-text">Too Much Teasing!</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Tags -->
+        <div class="quick-tags-wrap">
+          <span class="picker-label">Tap to add quick thoughts:</span>
+          <div class="tags-cloud">
+            <button type="button" class="tag-chip" onclick="addFeedbackTag('Bhaiya, website bohot pyari bani hai! ❤️')">✨ Bohot pyari website</button>
+            <button type="button" class="tag-chip" onclick="addFeedbackTag('Loved the Doraemon anywhere door & songs! 🚪🎶')">🚪 Loved Doraemon Door</button>
+            <button type="button" class="tag-chip" onclick="addFeedbackTag('Mera ₹50,000 cash gift kab mil raha hai? 😂💸')">💸 Real Cash Gift Kab Milega?</button>
+            <button type="button" class="tag-chip" onclick="addFeedbackTag('Motu ka samosa khilana sabse funny tha! 🥟🤣')">🥟 Samosa minigame was funny</button>
+            <button type="button" class="tag-chip" onclick="addFeedbackTag('Thank you for making my 6th November so special! 🎂🌟')">🌟 Thanks for making it special</button>
+          </div>
+        </div>
+
+        <!-- Feedback Form -->
+        <form class="feedback-form" id="developerFeedbackForm" onsubmit="sendFeedbackEmail(event)">
+          <div class="form-row">
+            <div class="input-field-wrap">
+              <label for="fbSenderName">Your Name / Title:</label>
+              <input type="text" id="fbSenderName" value="Dipanshi 👑 (Birthday Queen)" required>
+            </div>
+            <div class="input-field-wrap">
+              <label for="fbRecipient">Sending to Brother's Email:</label>
+              <div class="email-display-pill">
+                <span>📧 yadavalok7114@gmail.com</span>
+                <button type="button" class="copy-email-btn" onclick="copyBrotherEmail(this)" title="Copy Email">📋 Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-field-wrap">
+            <label for="fbMessage">Your Personal Note / Review:</label>
+            <textarea id="fbMessage" rows="4" placeholder="Type your heartfelt feedback, message, or complaint for Bhaiya here... (e.g. Bhaiya, thank you for coding this surprise for me! Par treat kab de rahe ho?)" required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="send-feedback-btn">
+              <span>🚀 Send Message to Bhaiya (yadavalok7114@gmail.com)</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Feedback Success Toast / Modal -->
+        <div id="fbSuccessNotice" class="fb-success-box hidden">
+          <div class="fb-success-content">
+            <span class="fb-success-icon">💌✨</span>
+            <h3>Sent Directly to Bhaiya's Inbox!</h3>
+            <p>Your message has been dispatched to <strong>yadavalok7114@gmail.com</strong>! Bhaiya is going to love reading this! ❤️</p>
+            <button type="button" class="fb-ok-btn" onclick="dismissFeedbackNotice()">Awesome! 🥰</button>
+          </div>
+        </div>
+
       </div>
     </section>
 

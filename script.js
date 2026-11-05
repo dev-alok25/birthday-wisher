@@ -10,6 +10,7 @@ class BirthdayAudioController {
     this.audio.loop = true;
     this.audio.volume = 0.85;
     this.isPlaying = false;
+    this.autoPauseTimer = null;
   }
 
   toggle() {
@@ -24,18 +25,35 @@ class BirthdayAudioController {
 
   play() {
     stopDoraemonSong();
+    this.clearAutoPauseTimer();
     this.audio.play().then(() => {
       this.isPlaying = true;
       this.updateUI(true);
+
+      // Automatically pause happy birthday song after 20 seconds
+      this.autoPauseTimer = setTimeout(() => {
+        if (this.isPlaying) {
+          this.pause();
+          console.log('Happy birthday song automatically paused after 20 seconds');
+        }
+      }, 20000);
     }).catch(err => {
       console.log('Autoplay interaction needed:', err);
     });
   }
 
   pause() {
+    this.clearAutoPauseTimer();
     this.audio.pause();
     this.isPlaying = false;
     this.updateUI(false);
+  }
+
+  clearAutoPauseTimer() {
+    if (this.autoPauseTimer) {
+      clearTimeout(this.autoPauseTimer);
+      this.autoPauseTimer = null;
+    }
   }
 
   updateUI(playing) {
@@ -228,118 +246,77 @@ function runawayButton(btn) {
   }
 }
 
-// ================= 6th November Security Vault & Lock Screen =================
-let vaultCountdownInterval = null;
+// ================= Developer Brother Feedback System =================
+let selectedRatingText = '⭐⭐⭐⭐⭐ 10/10 Best Brother in the Universe! 🥹💖';
 
-function initVaultLock() {
-  const vault = document.getElementById('birthdayVaultLock');
-  if (!vault) return;
-
-  const isUnlocked = sessionStorage.getItem('dipanshi_vault_unlocked') === 'true';
-  const now = new Date();
-  const currentYear = now.getFullYear();
-
-  // 6th November 00:00:00 Midnight
-  const unlockDate = new Date(currentYear, 10, 6, 0, 0, 0);
-
-  if (isUnlocked || now >= unlockDate) {
-    vault.style.display = 'none';
-    return;
-  }
-
-  // Vault is ACTIVE
-  vault.style.display = 'flex';
-
-  function updateVaultCountdown() {
-    const currentTime = new Date();
-    const remaining = unlockDate.getTime() - currentTime.getTime();
-
-    if (remaining <= 0) {
-      clearInterval(vaultCountdownInterval);
-      unlockVault(true);
-      return;
-    }
-
-    const totalSeconds = Math.floor(remaining / 1000);
-    const hours = Math.floor(totalSeconds / 3600);
-    const mins = Math.floor((totalSeconds % 3600) / 60);
-    const secs = Math.floor(totalSeconds % 60);
-
-    const hEl = document.getElementById('vHours');
-    const mEl = document.getElementById('vMins');
-    const sEl = document.getElementById('vSecs');
-
-    if (hEl) hEl.textContent = String(hours).padStart(2, '0');
-    if (mEl) mEl.textContent = String(mins).padStart(2, '0');
-    if (sEl) sEl.textContent = String(secs).padStart(2, '0');
-  }
-
-  updateVaultCountdown();
-  vaultCountdownInterval = setInterval(updateVaultCountdown, 1000);
+function initFeedbackSystem() {
+  const reactionCards = document.querySelectorAll('.reaction-card');
+  reactionCards.forEach(card => {
+    card.addEventListener('click', () => {
+      reactionCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      selectedRatingText = card.getAttribute('data-rating') || '';
+    });
+  });
 }
 
-function unlockVault(isAuto = false) {
-  const vault = document.getElementById('birthdayVaultLock');
-  if (!vault) return;
-
-  sessionStorage.setItem('dipanshi_vault_unlocked', 'true');
-  vault.classList.add('unlocked');
-
-  // Play celebration sounds & fireworks
-  try {
-    const fwSound = new Audio('media/firework sound.mp3');
-    fwSound.volume = 0.85;
-    fwSound.play().catch(() => {});
-  } catch (e) {}
-
-  if (particleSystem) {
-    particleSystem.createConfettiBurst(window.innerWidth / 2, window.innerHeight / 2, 140);
-    launchFireworksShow();
-  }
-
-  setTimeout(() => {
-    vault.style.display = 'none';
-  }, 800);
-}
-
-function trySneakPeek() {
-  playTeaseTrack('media/khatam goodbye.mp3', 0.95);
-
-  if (particleSystem) {
-    particleSystem.createConfettiBurst(window.innerWidth / 2, window.innerHeight * 0.4, 30);
-  }
-
-  alert("🚫 SNEAK PEEK FAILED! 😂\n\nKhatam! Tata! Goodbye! Gaya!\n\nNice try Dipanshi, but Doraemon's 4D Security Lock is active until 12:00 AM Midnight on 6th November!\nPlease wait for your big birthday surprise! 🎂🎁");
-}
-
-function openPasscodePrompt() {
-  const area = document.getElementById('passcodeArea');
-  area.classList.toggle('hidden');
-  const input = document.getElementById('passcodeInput');
-  if (!area.classList.contains('hidden') && input) {
-    input.focus();
-  }
-}
-
-function checkPasskey(event) {
-  if (event.key === 'Enter') {
-    submitPasscode();
-  }
-}
-
-function submitPasscode() {
-  const input = document.getElementById('passcodeInput');
-  const errorEl = document.getElementById('passcodeError');
-  const val = input.value.trim().toLowerCase();
-
-  const validKeys = ['6nov', '6thnov', 'dipanshi', 'sister', 'brother', 'alok', 'secret'];
-
-  if (validKeys.includes(val)) {
-    if (errorEl) errorEl.textContent = '';
-    unlockVault(false);
+function addFeedbackTag(text) {
+  const textarea = document.getElementById('fbMessage');
+  if (!textarea) return;
+  if (textarea.value.trim().length > 0) {
+    textarea.value += ' ' + text;
   } else {
-    if (errorEl) errorEl.textContent = '❌ Incorrect code! Only brother has the master key! 😜';
-    playTeaseTrack('media/I am joking.mp3', 0.95);
+    textarea.value = text;
+  }
+  textarea.focus();
+}
+
+function copyBrotherEmail(btn) {
+  const email = 'yadavalok7114@gmail.com';
+  navigator.clipboard.writeText(email).then(() => {
+    if (btn) {
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '✅ Copied!';
+      btn.style.background = '#2e7d32';
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.style.background = '';
+      }, 2000);
+    }
+  }).catch(() => {
+    prompt('Copy brother email:', email);
+  });
+}
+
+function sendFeedbackEmail(e) {
+  e.preventDefault();
+  const senderName = document.getElementById('fbSenderName')?.value || 'Dipanshi';
+  const message = document.getElementById('fbMessage')?.value || '';
+  const brotherEmail = 'yadavalok7114@gmail.com';
+
+  const subject = encodeURIComponent(`🎂 Birthday Surprise Feedback from ${senderName}! 🎉`);
+  const bodyText = `Hi Bhaiya (Alok)! 👋\n\nHere is my feedback for the Birthday Website:\n\n⭐ My Reaction: ${selectedRatingText}\n\n💌 My Message:\n${message}\n\n---\nSent with love from Dipanshi's Birthday Website 🎂✨`;
+  const mailtoUrl = `mailto:${brotherEmail}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+
+  // Trigger celebration confetti burst
+  if (particleSystem) {
+    particleSystem.createConfettiBurst(window.innerWidth / 2, window.innerHeight * 0.6, 60);
+  }
+
+  // Open user's email client
+  window.open(mailtoUrl, '_blank');
+
+  // Show celebratory confirmation notice
+  const notice = document.getElementById('fbSuccessNotice');
+  if (notice) {
+    notice.classList.remove('hidden');
+  }
+}
+
+function dismissFeedbackNotice() {
+  const notice = document.getElementById('fbSuccessNotice');
+  if (notice) {
+    notice.classList.add('hidden');
   }
 }
 
@@ -517,14 +494,22 @@ window.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('fireworks-canvas');
   particleSystem = new ParticleSystem(canvas);
 
-  // Initialize Security Vault Lock
-  initVaultLock();
-
   // Setup ambient balloon generator
   initAmbientBalloons();
 
-  // Setup Birthday Countdown
-  initBirthdayCountdown();
+  // Setup Feedback System
+  initFeedbackSystem();
+
+  // Auto-start 20s Birthday Music preview on first user touch / click
+  let hasAutoStarted = false;
+  const startOnFirstGesture = () => {
+    if (!hasAutoStarted && !bdayMusic.isPlaying) {
+      hasAutoStarted = true;
+      bdayMusic.play();
+    }
+  };
+  document.addEventListener('click', startOnFirstGesture, { once: true });
+  document.addEventListener('touchstart', startOnFirstGesture, { once: true });
 
   // Setup Samosa Arena Interactivity
   initArenaControls();
@@ -555,60 +540,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }, 800);
 });
-
-// ================= 6th November Live Birthday Clock =================
-function initBirthdayCountdown() {
-  function updateCountdown() {
-    const now = new Date();
-    const currentYear = now.getFullYear();
-
-    // 6th November of current year
-    let target = new Date(currentYear, 10, 6, 0, 0, 0);
-    let endOfBday = new Date(currentYear, 10, 6, 23, 59, 59);
-
-    const statusEl = document.getElementById('countdownStatus');
-    const daysEl = document.getElementById('timeDays');
-    const hoursEl = document.getElementById('timeHours');
-    const minsEl = document.getElementById('timeMins');
-    const secsEl = document.getElementById('timeSecs');
-
-    const diff = target.getTime() - now.getTime();
-
-    if (now >= target && now <= endOfBday) {
-      statusEl.textContent = "🎉 TODAY IS DIPANSHI'S BIRTHDAY! HAPPY BIRTHDAY! 🎂💖";
-      daysEl.textContent = "00";
-      hoursEl.textContent = "PARTY";
-      hoursEl.style.fontSize = "1.1rem";
-      minsEl.textContent = "TIME";
-      minsEl.style.fontSize = "1.1rem";
-      secsEl.textContent = "✨";
-    } else if (diff > 0) {
-      statusEl.textContent = "Counting down to Dipanshi's 6th November Celebration! 🎈";
-      const totalSecs = Math.floor(diff / 1000);
-      const days = Math.floor(totalSecs / (3600 * 24));
-      const hours = Math.floor((totalSecs % (3600 * 24)) / 3600);
-      const mins = Math.floor((totalSecs % 3600) / 60);
-      const secs = Math.floor(totalSecs % 60);
-
-      daysEl.textContent = String(days).padStart(2, '0');
-      hoursEl.textContent = String(hours).padStart(2, '0');
-      minsEl.textContent = String(mins).padStart(2, '0');
-      secsEl.textContent = String(secs).padStart(2, '0');
-    } else {
-      statusEl.textContent = "🌟 Celebrating Dipanshi's Birthday Season! Stay Blessed! 🌟";
-      daysEl.textContent = "365";
-      hoursEl.textContent = "DAYS";
-      hoursEl.style.fontSize = "1rem";
-      minsEl.textContent = "OF";
-      minsEl.style.fontSize = "1rem";
-      secsEl.textContent = "JOY";
-      secsEl.style.fontSize = "1rem";
-    }
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-}
 
 // Arena pointer move for interactive catching
 function initArenaControls() {
