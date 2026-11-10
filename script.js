@@ -1,5 +1,5 @@
 /**
- * Happy Birthday Dipanshi Didi - 6th November
+ * Happy Birthday Didi - 6th November
  * Developer Chhota Bhai Alok Edition & Sibling Teasing Matrix
  */
 
@@ -137,7 +137,7 @@ function triggerTease(type) {
       playTeaseTrack('media/khatam goodbye.mp3', 0.95);
       icon.textContent = '💸';
       title.textContent = 'Aaye Haaye! 50 Hazaar Lene Aayi Thi Didi? 😂';
-      msg.textContent = 'Khatam! Tata! Bye-Bye! Gaya! Paisa khatam! Chhote bhai ka bank account empty ho gaya! Only unlimited brotherly love & blessings available for Dipanshi Didi! 😜';
+      msg.textContent = 'Khatam! Tata! Bye-Bye! Gaya! Paisa khatam! Chhote bhai ka bank account empty ho gaya! Only unlimited brotherly love & blessings available for Didi! 😜';
       shakeScreen();
       break;
     }
@@ -149,7 +149,7 @@ function triggerTease(type) {
       playTeaseTrack('media/Uthale re deva uthale re baba.mp3', 0.95);
       icon.textContent = '🤦‍♂️';
       title.textContent = 'Mana Kiya Tha Na Didi Mat Dabao?! 😂';
-      msg.textContent = "Babu Bhaiya reaction: 'Uthale re deva uthale re baba, mereko nahi re, isko uthale!' Curiously clicking forbidden buttons will alert the whole family! Happy Birthday Dipanshi Didi! 🚨";
+      msg.textContent = "Babu Bhaiya reaction: 'Uthale re deva uthale re baba, mereko nahi re, isko uthale!' Curiously clicking forbidden buttons will alert the whole family! Happy Birthday Didi! 🚨";
       shakeScreen();
       break;
     }
@@ -200,7 +200,7 @@ function triggerTease(type) {
       playTeaseTrack('media/Gotilo song.mp3', 0.9);
       icon.textContent = '🏆';
       title.textContent = 'System Verified: Chhota Bhai is 200% Smarter! 🎓';
-      msg.textContent = 'Honest answer recorded in the database! Chhota bhai IQ level: Genius! Victory dance party mode activated! Kudos for admitting the truth, Dipanshi Didi! 💃🕺';
+      msg.textContent = 'Honest answer recorded in the database! Chhota bhai IQ level: Genius! Victory dance party mode activated! Kudos for admitting the truth, Didi! 💃🕺';
       launchFireworksShow();
       break;
     }
@@ -223,7 +223,7 @@ function shakeScreen() {
   }, 450);
 }
 
-// Runaway Button: Dipanshi option escapes when hovered/clicked/touched
+// Runaway Button: Didi option escapes when hovered/clicked/touched
 function runawayButton(btn) {
   if (!btn) return;
   const isMobile = window.innerWidth < 680;
@@ -235,7 +235,7 @@ function runawayButton(btn) {
 
   const hints = [
     "Oops, too slow Didi! 😂",
-    "Can't click it, Dipanshi Didi! 😜",
+    "Can't click it, Didi! 😜",
     "The button is dodging you! 🏃‍♀️",
     "Accept it: Chhota bhai is smarter! 👨‍💻",
     "Nice try Didi! Still impossible! 🚀"
@@ -290,12 +290,12 @@ function copyBrotherEmail(btn) {
 
 function sendFeedbackEmail(e) {
   e.preventDefault();
-  const senderName = document.getElementById('fbSenderName')?.value || 'Dipanshi Didi';
+  const senderName = document.getElementById('fbSenderName')?.value || 'Didi';
   const message = document.getElementById('fbMessage')?.value || '';
   const brotherEmail = 'yadavalok7114@gmail.com';
 
   const subject = encodeURIComponent(`🎂 Birthday Surprise Feedback from ${senderName}! 🎉`);
-  const bodyText = `Hi Alok (Chhote)! 👋\n\nHere is my feedback for the Birthday Website:\n\n⭐ My Reaction: ${selectedRatingText}\n\n💌 My Message:\n${message}\n\n---\nSent with love from Dipanshi Didi 🎂✨`;
+  const bodyText = `Hi Alok (Chhote)! 👋\n\nHere is my feedback for the Birthday Website:\n\n⭐ My Reaction: ${selectedRatingText}\n\n💌 My Message:\n${message}\n\n---\nSent with love from Didi 🎂✨`;
   const mailtoUrl = `mailto:${brotherEmail}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
 
   // Trigger celebration confetti burst
@@ -731,10 +731,10 @@ function openGiftBox() {
 
 // ================= Character Interaction Buttons =================
 const motuQuotes = [
-  "Crunch, crunch, yum! 🥟 Garam samosa kha ke Motu ka dimaag chalu ho gaya! Happy Birthday Dipanshi Didi! 🎉",
-  "Dipanshi Didi, aap jiyo hazaro saal! Aur har saal mujhe party me aise hi crunchy samosay khilao! 🥳",
-  "Khaike samosa, Motu ka dil garden garden ho gaya! Keep shining always Dipanshi Didi! 💖",
-  "Patlu ko bolo cake khaye, main toh Dipanshi Didi ke naam ka samosa hi todunga! 🥟✨"
+  "Crunch, crunch, yum! 🥟 Garam samosa kha ke Motu ka dimaag chalu ho gaya! Happy Birthday Didi! 🎉",
+  "Didi, aap jiyo hazaro saal! Aur har saal mujhe party me aise hi crunchy samosay khilao! 🥳",
+  "Khaike samosa, Motu ka dil garden garden ho gaya! Keep shining always Didi! 💖",
+  "Patlu ko bolo cake khaye, main toh Didi ke naam ka samosa hi todunga! 🥟✨"
 ];
 let motuQuoteIndex = 0;
 
@@ -757,10 +757,10 @@ function feedMotu() {
 }
 
 const patluQuotes = [
-  "Aaj kamayenga to kal baithkar khayenga! 💼💰 Scientific rule for Dipanshi Didi's golden future!",
-  "Idea! Dipanshi Didi ke 6th November par hum sab milkar universe ka sabse bada party karenge! 🚀",
-  "Meri calculation ke mutabiq: Dipanshi Didi's future is filled with 100% success & joy! 🌟",
-  "Dimaag ki batti keh rahi hai: Dipanshi Didi is born to conquer her dreams! 🌈"
+  "Aaj kamayenga to kal baithkar khayenga! 💼💰 Scientific rule for Didi's golden future!",
+  "Idea! Didi ke 6th November par hum sab milkar universe ka sabse bada party karenge! 🚀",
+  "Meri calculation ke mutabiq: Didi's future is filled with 100% success & joy! 🌟",
+  "Dimaag ki batti keh rahi hai: Didi is born to conquer her dreams! 🌈"
 ];
 let patluQuoteIndex = 0;
 
