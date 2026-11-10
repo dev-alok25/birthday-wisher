@@ -55,8 +55,8 @@ An open, customizable, and lightweight client-side birthday celebration web appl
 
 #### 1. Clone or Download:
 ```bash
-git clone https://github.com/dev-alok25/dipanshi-birthday-wish.git
-cd dipanshi-birthday-wish
+git clone https://github.com/dev-alok25/birthday-wisher.git
+cd birthday-wisher
 ```
 
 #### 2. Run Locally:
@@ -72,7 +72,7 @@ Simply open `index.html` in any web browser. No installation or build steps need
 
 ### 🌐 Live Demo & Deployment
 - Deploy instantly for free on **GitHub Pages**, Vercel, or Netlify.
-- **Live Demo**: [https://dev-alok25.github.io/dipanshi-birthday-wish/](https://dev-alok25.github.io/dipanshi-birthday-wish/)
+- **Live Demo**: [https://dev-alok25.github.io/birthday-wisher/](https://dev-alok25.github.io/birthday-wisher/)
 
 ---
 
