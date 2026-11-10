@@ -1,5 +1,5 @@
 /**
- * Happy Birthday Didi - 6th November
+ * Happy Birthday Didi - 12th November
  * Developer Chhota Bhai Alok Edition & Sibling Teasing Matrix
  */
 
@@ -497,6 +497,9 @@ window.addEventListener('DOMContentLoaded', () => {
   // Setup ambient balloon generator
   initAmbientBalloons();
 
+  // Setup 12th November Birthday Countdown Timer
+  initBirthdayCountdown();
+
   // Setup Feedback System
   initFeedbackSystem();
 
@@ -540,6 +543,64 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }, 800);
 });
+
+// ================= 12th November Live Birthday Countdown =================
+function initBirthdayCountdown() {
+  function updateCountdown() {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+
+    // 12th November of current year (Month index 10 is November)
+    let target = new Date(currentYear, 10, 12, 0, 0, 0);
+    let endOfBday = new Date(currentYear, 10, 12, 23, 59, 59);
+
+    const statusEl = document.getElementById('countdownStatus');
+    const daysEl = document.getElementById('timeDays');
+    const hoursEl = document.getElementById('timeHours');
+    const minsEl = document.getElementById('timeMins');
+    const secsEl = document.getElementById('timeSecs');
+
+    if (!statusEl || !daysEl || !hoursEl || !minsEl || !secsEl) return;
+
+    const diff = target.getTime() - now.getTime();
+
+    if (now >= target && now <= endOfBday) {
+      statusEl.textContent = "🎉 TODAY IS DIDI'S BIRTHDAY! HAPPY BIRTHDAY! 🎂💖";
+      daysEl.textContent = "00";
+      hoursEl.textContent = "PARTY";
+      hoursEl.style.fontSize = "1.05rem";
+      minsEl.textContent = "TIME";
+      minsEl.style.fontSize = "1.05rem";
+      secsEl.textContent = "✨";
+    } else if (diff > 0) {
+      statusEl.textContent = "Counting down to Didi's 12th November Celebration! 🎈";
+      const totalSecs = Math.floor(diff / 1000);
+      const days = Math.floor(totalSecs / (3600 * 24));
+      const hours = Math.floor((totalSecs % (3600 * 24)) / 3600);
+      const mins = Math.floor((totalSecs % 3600) / 60);
+      const secs = Math.floor(totalSecs % 60);
+
+      daysEl.textContent = String(days).padStart(2, '0');
+      hoursEl.textContent = String(hours).padStart(2, '0');
+      minsEl.textContent = String(mins).padStart(2, '0');
+      secsEl.textContent = String(secs).padStart(2, '0');
+      hoursEl.style.fontSize = "";
+      minsEl.style.fontSize = "";
+    } else {
+      statusEl.textContent = "🌟 Celebrating Didi's Birthday! Wishing Endless Joy! 🌟";
+      daysEl.textContent = "365";
+      hoursEl.textContent = "DAYS";
+      hoursEl.style.fontSize = "0.9rem";
+      minsEl.textContent = "OF";
+      minsEl.style.fontSize = "0.9rem";
+      secsEl.textContent = "JOY";
+      secsEl.style.fontSize = "0.9rem";
+    }
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
 
 // Arena pointer move for interactive catching
 function initArenaControls() {
@@ -758,7 +819,7 @@ function feedMotu() {
 
 const patluQuotes = [
   "Aaj kamayenga to kal baithkar khayenga! 💼💰 Scientific rule for Didi's golden future!",
-  "Idea! Didi ke 6th November par hum sab milkar universe ka sabse bada party karenge! 🚀",
+  "Idea! Didi ke 12th November par hum sab milkar universe ka sabse bada party karenge! 🚀",
   "Meri calculation ke mutabiq: Didi's future is filled with 100% success & joy! 🌟",
   "Dimaag ki batti keh rahi hai: Didi is born to conquer her dreams! 🌈"
 ];

@@ -27,7 +27,7 @@
     <div class="nav-left">
       <div class="date-badge">
         <span class="calendar-icon">📅</span>
-        <span class="date-text">6th November Special</span>
+        <span class="date-text">12th November Special</span>
       </div>
       <div class="now-playing-wrap" id="musicStatusPill">
         <div class="equalizer-bars" id="eqBars">
@@ -126,7 +126,7 @@
       <div class="aerial-banner">
         <span class="plane-string">〰〰〰</span>
         <div class="banner-box">
-          <span class="banner-text">🎂 Special Birthday Flight for <strong>Didi!</strong> 💖 (6th Nov) 🎈</span>
+          <span class="banner-text">🎂 Special Birthday Flight for <strong>Didi!</strong> 💖 (12th Nov) 🎈</span>
         </div>
       </div>
     </div>
@@ -153,13 +153,36 @@
       </p>
 
       <div class="birthday-date-tag">
-        <span class="sparkle-star">✨</span> 6th November • The Best Day Ever! <span class="sparkle-star">✨</span>
+        <span class="sparkle-star">✨</span> 12th November • The Best Day Ever! <span class="sparkle-star">✨</span>
       </div>
-      <!-- Today's Birthday Celebration Banner -->
-      <div class="today-bday-banner">
-        <span class="bday-balloon-icon">🎈</span>
-        <span>Today is Didi's Big Day! Let the celebrations begin! 🎂✨</span>
-        <span class="bday-balloon-icon">🎈</span>
+
+      <!-- Live Birthday Clock & Countdown to 12th November -->
+      <div class="countdown-card" id="countdownCard">
+        <div class="countdown-header">
+          <span class="clock-icon">⏰</span>
+          <span class="countdown-status" id="countdownStatus">Counting down to Didi's 12th November Celebration! 🎈</span>
+        </div>
+        <div class="countdown-timer" id="countdownTimer">
+          <div class="time-block">
+            <span class="time-num" id="timeDays">00</span>
+            <span class="time-label">Days</span>
+          </div>
+          <div class="time-colon">:</div>
+          <div class="time-block">
+            <span class="time-num" id="timeHours">00</span>
+            <span class="time-label">Hours</span>
+          </div>
+          <div class="time-colon">:</div>
+          <div class="time-block">
+            <span class="time-num" id="timeMins">00</span>
+            <span class="time-label">Mins</span>
+          </div>
+          <div class="time-colon">:</div>
+          <div class="time-block">
+            <span class="time-num" id="timeSecs">00</span>
+            <span class="time-label">Secs</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -356,7 +379,7 @@
     <section class="cake-section">
       <div class="section-title-wrap">
         <h2 class="section-title">🎂 Make a Wish, Didi! 🕯️</h2>
-        <p class="section-subtitle">Click the glowing candles or the button below to blow them out and make your 6th
+        <p class="section-subtitle">Click the glowing candles or the button below to blow them out and make your 12th
           November wish!</p>
       </div>
 
@@ -400,7 +423,7 @@
             <div class="cake-decorations">
               <span class="star-deco">⭐</span>
               <span class="star-deco">💖</span>
-              <span class="star-deco">6th Nov</span>
+              <span class="star-deco">12th Nov</span>
               <span class="star-deco">💖</span>
               <span class="star-deco">⭐</span>
             </div>
@@ -484,10 +507,10 @@
       <!-- Secret Sister Message Revealed from Box -->
       <div class="surprise-letter hidden" id="surpriseLetter">
         <div class="letter-card">
-          <div class="letter-stamp">6 Nov 💌</div>
+          <div class="letter-stamp">12 Nov 💌</div>
           <h3 class="letter-greeting">Dearest Didi, ❤️</h3>
           <p class="letter-body">
-            Today on <strong>6th November</strong>, the world became a brighter, funnier, and lovelier place because you
+            Today on <strong>12th November</strong>, the world became a brighter, funnier, and lovelier place because you
             were born!
           </p>
           <p class="letter-body">
@@ -543,7 +566,7 @@
           </div>
           <div class="polaroid-caption">
             <strong>✨ Birthday Queen Didi ✨</strong>
-            <span class="sub-caption">6th November • Best Didi in the Universe 🌟</span>
+            <span class="sub-caption">12th November • Best Didi in the Universe 🌟</span>
           </div>
           <button class="tease-btn tb-wow" onclick="triggerTease('wow')">
             💖 "Alok, do I look nice today?" 💬
@@ -644,7 +667,7 @@
 
     <!-- Wishes Wall & Messages -->
     <section class="wishes-wall">
-      <h2 class="section-title">💌 6th November Special Greetings</h2>
+      <h2 class="section-title">💌 12th November Special Greetings</h2>
       <div class="wishes-grid">
         <div class="wish-item item-1">
           <div class="wish-badge">🎁 Doraemon's Wish</div>
@@ -677,7 +700,7 @@
           <div class="feedback-badge">💌 NOTE FROM DIDI TO DEVELOPER CHHOTA BHAI 👨‍💻</div>
           <h2 class="feedback-title">Rate Your Surprise & Message Chhota Bhai Alok 😎</h2>
           <p class="feedback-subtitle">
-            Kaisa laga 6th November birthday surprise Didi? Share your review directly with your developer Chhota Bhai!
+            Kaisa laga 12th November birthday surprise Didi? Share your review directly with your developer Chhota Bhai!
             (Taarif ya shikayat, jo bhi ho likh do! 😂❤️)
           </p>
         </div>
@@ -714,7 +737,7 @@
             <button type="button" class="tag-chip" onclick="addFeedbackTag('Loved the Doraemon Door! 🚪🎶')">🚪 Loved Doraemon Door</button>
             <button type="button" class="tag-chip" onclick="addFeedbackTag('Mera ₹50,000 cash gift kab bhej rahe ho Alok? 😂💸')">💸 Real Cash Gift Kab Milega?</button>
             <button type="button" class="tag-chip" onclick="addFeedbackTag('Motu ka samosa khilana sabse funny tha! 🥟🤣')">🥟 Samosa minigame was funny</button>
-            <button type="button" class="tag-chip" onclick="addFeedbackTag('Thank you Chhote for making my 6th November so special! 🎂🌟')">🌟 Thanks for making it special</button>
+            <button type="button" class="tag-chip" onclick="addFeedbackTag('Thank you Chhote for making my 12th November so special! 🎂🌟')">🌟 Thanks for making it special</button>
           </div>
         </div>
 
@@ -766,7 +789,7 @@
     <!-- Footer -->
     <footer class="birthday-footer">
       <div class="footer-balloons">🎈 🎂 🎁 💖 🌟 🥟 🚁</div>
-      <p>Crafted with endless love & laughter for <strong>Didi</strong> by her developer brother Alok ❤️</p>
+      <p>Crafted with endless love & laughter for <strong>Didi</strong> on <strong>12th November</strong> by her developer brother Alok ❤️</p>
       <p class="footer-sub">No backend required • 100% pure browser joy • Play, Celebrate & Smile!</p>
       <p><strong>Bahut mehnat lagi 🥲🙄🥱</strong></p>
     </footer>

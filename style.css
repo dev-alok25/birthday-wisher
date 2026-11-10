@@ -1,5 +1,5 @@
 /* ============================================================
-   Birthday Wish for Dipanshi - 6th November
+   Birthday Wish for Didi - 12th November
    Playful Cartoon Theme (Doraemon & Motu Patlu)
    ============================================================ */
 
@@ -2803,7 +2803,56 @@ body {
   }
 }
 
+@media (max-width: 480px) {
+  .countdown-card {
+    max-width: 95%;
+    padding: 14px 10px;
+    margin: 16px auto 0;
+  }
+
+  .countdown-header {
+    font-size: 0.95rem;
+    gap: 6px;
+  }
+
+  .countdown-timer {
+    gap: 5px;
+  }
+
+  .time-block {
+    min-width: 52px;
+    padding: 6px 8px;
+    border-radius: 10px;
+  }
+
+  .time-num {
+    font-size: 1.35rem;
+  }
+
+  .time-label {
+    font-size: 0.65rem;
+  }
+
+  .time-colon {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+}
+
 @media (max-width: 380px) {
+  .countdown-card {
+    padding: 12px 6px;
+  }
+
+  .time-block {
+    min-width: 46px;
+    padding: 5px 4px;
+  }
+
+  .time-num {
+    font-size: 1.15rem;
+  }
+
   .date-badge {
     font-size: 0.75rem;
     padding: 4px 8px;
@@ -2822,6 +2871,4 @@ body {
     font-size: 0.76rem;
     padding: 6px 8px;
   }
-
-
 }

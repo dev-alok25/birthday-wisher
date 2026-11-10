@@ -1,7 +1,7 @@
 # 🎉 Happy Birthday Didi! 🎂✨
-### Curious Developer Brother Edition (6th November Special)
+### Curious Developer Brother Edition (12th November Special)
 
-A customized, cartoon-themed birthday celebration website built by a curious developer brother with playful sibling teasing traps, unexpected meme audio, real background music, and interactive surprises!
+A customized, cartoon-themed birthday celebration website built by a curious developer brother with a live countdown timer ticking to 12th November, playful sibling teasing traps, unexpected meme audio, real background music, and interactive surprises!
 
 ---
 
