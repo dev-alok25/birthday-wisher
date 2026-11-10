@@ -246,6 +246,126 @@ function runawayButton(btn) {
   }
 }
 
+// ================= 12th November Security Vault & Lock Screen =================
+let vaultCountdownInterval = null;
+
+function initVaultLock() {
+  const vault = document.getElementById('birthdayVaultLock');
+  if (!vault) return;
+
+  const isUnlocked = sessionStorage.getItem('didi_vault_unlocked') === 'true';
+  const now = new Date();
+  const currentYear = now.getFullYear();
+
+  // 12th November 00:00:00 Midnight IST
+  const unlockDate = new Date(currentYear, 10, 12, 0, 0, 0);
+
+  if (isUnlocked || now >= unlockDate) {
+    vault.style.display = 'none';
+    return;
+  }
+
+  // Vault is ACTIVE
+  vault.style.display = 'flex';
+
+  function updateVaultCountdown() {
+    const currentTime = new Date();
+    const remaining = unlockDate.getTime() - currentTime.getTime();
+
+    if (remaining <= 0) {
+      clearInterval(vaultCountdownInterval);
+      unlockVault(true);
+      return;
+    }
+
+    const totalSeconds = Math.floor(remaining / 1000);
+    const days = Math.floor(totalSeconds / (3600 * 24));
+    const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+    const mins = Math.floor((totalSeconds % 3600) / 60);
+    const secs = Math.floor(totalSeconds % 60);
+
+    const dEl = document.getElementById('vDays');
+    const hEl = document.getElementById('vHours');
+    const mEl = document.getElementById('vMins');
+    const sEl = document.getElementById('vSecs');
+
+    if (dEl) dEl.textContent = String(days).padStart(2, '0');
+    if (hEl) hEl.textContent = String(hours).padStart(2, '0');
+    if (mEl) mEl.textContent = String(mins).padStart(2, '0');
+    if (sEl) sEl.textContent = String(secs).padStart(2, '0');
+  }
+
+  updateVaultCountdown();
+  vaultCountdownInterval = setInterval(updateVaultCountdown, 1000);
+}
+
+function unlockVault(isAuto = false) {
+  const vault = document.getElementById('birthdayVaultLock');
+  if (!vault) return;
+
+  sessionStorage.setItem('didi_vault_unlocked', 'true');
+  vault.classList.add('unlocked');
+
+  // Play celebration sounds & fireworks
+  try {
+    const fwSound = new Audio('media/firework sound.mp3');
+    fwSound.volume = 0.85;
+    fwSound.play().catch(() => {});
+  } catch (e) {}
+
+  if (particleSystem) {
+    particleSystem.createConfettiBurst(window.innerWidth / 2, window.innerHeight / 2, 140);
+    launchFireworksShow();
+  }
+
+  setTimeout(() => {
+    vault.style.display = 'none';
+  }, 800);
+}
+
+function trySneakPeek() {
+  playTeaseTrack('media/khatam goodbye.mp3', 0.95);
+
+  if (particleSystem) {
+    particleSystem.createConfettiBurst(window.innerWidth / 2, window.innerHeight * 0.4, 30);
+  }
+
+  alert("🚫 SNEAK PEEK FAILED! 😂\n\nKhatam! Tata! Goodbye! Gaya!\n\nNice try Didi, but Doraemon's 4D Security Lock is active until 12:00 AM Midnight on 12th November!\nPlease wait for your big birthday surprise! 🎂🎁");
+}
+
+function openPasscodePrompt() {
+  const area = document.getElementById('passcodeArea');
+  if (!area) return;
+  area.classList.toggle('hidden');
+  const input = document.getElementById('passcodeInput');
+  if (!area.classList.contains('hidden') && input) {
+    input.focus();
+  }
+}
+
+function checkPasskey(event) {
+  if (event.key === 'Enter') {
+    submitPasscode();
+  }
+}
+
+function submitPasscode() {
+  const input = document.getElementById('passcodeInput');
+  const errorEl = document.getElementById('passcodeError');
+  if (!input) return;
+  const val = input.value.trim().toLowerCase();
+
+  const validKeys = ['12nov', '12thnov', 'didi', 'sister', 'brother', 'alok', 'secret'];
+
+  if (validKeys.includes(val)) {
+    if (errorEl) errorEl.textContent = '';
+    unlockVault(false);
+  } else {
+    if (errorEl) errorEl.textContent = '❌ Incorrect code! Only brother Alok has the master key! 😜';
+    playTeaseTrack('media/I am joking.mp3', 0.95);
+  }
+}
+
 // ================= Developer Brother Feedback System =================
 let selectedRatingText = '⭐⭐⭐⭐⭐ 10/10 Best Chhota Bhai in the Universe! 🥹💖';
 
@@ -499,6 +619,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Setup 12th November Birthday Countdown Timer
   initBirthdayCountdown();
+
+  // Setup 12th November Security Vault Lock
+  initVaultLock();
 
   // Setup Feedback System
   initFeedbackSystem();

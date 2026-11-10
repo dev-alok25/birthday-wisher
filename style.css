@@ -37,6 +37,269 @@ body {
   background-attachment: fixed;
 }
 
+/* ================= 12th November Security Vault Screen ================= */
+.vault-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  background: radial-gradient(circle at center, #2c3e50 0%, #1a252f 70%, #0d131a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.vault-overlay.unlocked {
+  opacity: 0;
+  transform: scale(1.1);
+  pointer-events: none;
+}
+
+.vault-box {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 32px;
+  max-width: 540px;
+  width: 100%;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 64, 129, 0.35);
+  border: 4px solid #ff4081;
+  position: relative;
+  animation: vaultFloat 3s ease-in-out infinite alternate;
+}
+
+@keyframes vaultFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+
+.vault-icon-wrap {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.vault-big-lock {
+  font-size: 4.5rem;
+  display: inline-block;
+  animation: lockShake 2s infinite ease-in-out;
+}
+
+@keyframes lockShake {
+  0%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(-8deg); }
+  30% { transform: rotate(8deg); }
+  45% { transform: rotate(0deg); }
+}
+
+.vault-sparkles {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  font-size: 1.8rem;
+  animation: pulseBadge 1.5s infinite;
+}
+
+.vault-badge {
+  display: inline-block;
+  background: #d81b60;
+  color: white;
+  font-family: var(--font-bubble);
+  font-size: 0.85rem;
+  padding: 4px 16px;
+  border-radius: 50px;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 10px rgba(216, 27, 96, 0.3);
+}
+
+.vault-title {
+  font-family: var(--font-bubble);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  color: #1a237e;
+  margin-bottom: 10px;
+}
+
+.vault-msg {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #424242;
+  margin-bottom: 20px;
+}
+
+.vault-msg strong {
+  color: #e91e63;
+}
+
+.vault-countdown-container {
+  background: linear-gradient(135deg, #fff3e0, #ffe082);
+  border: 2px dashed #f57c00;
+  border-radius: 20px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+}
+
+.vault-countdown-title {
+  font-family: var(--font-bubble);
+  color: #e65100;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.vault-timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.vault-tblock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 6px 14px;
+  min-width: 58px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.vault-tblock span {
+  font-family: var(--font-bubble);
+  font-size: 1.8rem;
+  color: #d84315;
+  line-height: 1;
+}
+
+.vault-tblock small {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #8d6e63;
+  margin-top: 2px;
+}
+
+.vault-colon {
+  font-family: var(--font-bubble);
+  font-size: 1.6rem;
+  color: #e65100;
+  margin-bottom: 10px;
+}
+
+.vault-guards {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.guard-pill {
+  background: #e1f5fe;
+  border: 1px solid #81d4fa;
+  color: #0277bd;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 6px 12px;
+  border-radius: 50px;
+}
+
+.vault-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.vault-btn {
+  padding: 10px 18px;
+  border-radius: 50px;
+  border: none;
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.peek-btn {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: white;
+}
+
+.pass-btn {
+  background: linear-gradient(135deg, #0288d1, #01579b);
+  color: white;
+}
+
+.vault-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+.passcode-area {
+  background: #f5f5f5;
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 14px;
+  animation: popIn 0.3s ease-out;
+}
+
+.passcode-area.hidden {
+  display: none;
+}
+
+.passcode-hint {
+  font-size: 0.82rem;
+  color: #616161;
+  margin-bottom: 8px;
+}
+
+.passcode-input-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+#passcodeInput {
+  padding: 8px 14px;
+  border-radius: 50px;
+  border: 2px solid #ce93d8;
+  outline: none;
+  font-family: var(--font-body);
+  font-weight: 700;
+  width: 170px;
+}
+
+.pass-submit-btn {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.passcode-error {
+  color: #d32f2f;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-top: 6px;
+  min-height: 18px;
+}
+
+.vault-footer-note {
+  font-size: 0.8rem;
+  color: #757575;
+}
+
 /* ================= Today's Birthday Banner ================= */
 .today-bday-banner {
   display: inline-flex;
@@ -1850,9 +2113,10 @@ body {
   transition: transform 0.3s;
 }
 
+.didi-photo,
 .dipanshi-photo {
   object-fit: cover;
-  object-position: center 8%;
+  object-position: center 12%;
 }
 
 .brother-photo {
@@ -2804,6 +3068,46 @@ body {
 }
 
 @media (max-width: 480px) {
+  .vault-box {
+    padding: 22px 14px;
+    border-radius: 22px;
+    max-height: 94vh;
+  }
+
+  .vault-big-lock {
+    font-size: 3.5rem;
+  }
+
+  .vault-title {
+    font-size: 1.5rem;
+  }
+
+  .vault-msg {
+    font-size: 0.88rem;
+  }
+
+  .vault-timer {
+    gap: 6px;
+  }
+
+  .vault-tblock {
+    min-width: 44px;
+    padding: 4px 6px;
+  }
+
+  .vault-tblock span {
+    font-size: 1.3rem;
+  }
+
+  .vault-tblock small {
+    font-size: 0.58rem;
+  }
+
+  .vault-colon {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
   .countdown-card {
     max-width: 95%;
     padding: 14px 10px;

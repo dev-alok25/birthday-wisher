@@ -16,6 +16,70 @@
 
 <body>
 
+  <!-- 12th November Security Vault & Lock Screen -->
+  <div id="birthdayVaultLock" class="vault-overlay">
+    <div class="vault-box">
+      <div class="vault-icon-wrap">
+        <span class="vault-big-lock">🔐</span>
+        <div class="vault-sparkles">✨</div>
+      </div>
+
+      <div class="vault-badge">TOP SECRET • SURPRISE LOCKED 🔒</div>
+
+      <h1 class="vault-title">Didi's Birthday Vault</h1>
+      <p class="vault-msg">
+        Shhh! No peeking Didi! 🤫<br>
+        This special cartoon birthday surprise is locked with Doraemon's 4D Security until <strong>12th November, 12:00
+          AM Midnight!</strong>
+      </p>
+
+      <!-- Real-time Countdown to Midnight -->
+      <div class="vault-countdown-container">
+        <div class="vault-countdown-title">⏰ Vault Opens Automatically In:</div>
+        <div class="vault-timer">
+          <div class="vault-tblock"><span id="vDays">00</span><small>Days</small></div>
+          <div class="vault-colon">:</div>
+          <div class="vault-tblock"><span id="vHours">00</span><small>Hours</small></div>
+          <div class="vault-colon">:</div>
+          <div class="vault-tblock"><span id="vMins">00</span><small>Mins</small></div>
+          <div class="vault-colon">:</div>
+          <div class="vault-tblock"><span id="vSecs">00</span><small>Secs</small></div>
+        </div>
+      </div>
+
+      <!-- Cartoon Guards -->
+      <div class="vault-guards">
+        <div class="guard-pill">🚁 Doraemon is guarding the door!</div>
+        <div class="guard-pill">🥟 "Ruko zara, sabar karo! Pehle 12th Nov aane do!"</div>
+      </div>
+
+      <!-- Action buttons: Sneak Peek & Brother Passcode -->
+      <div class="vault-actions">
+        <button class="vault-btn peek-btn" onclick="trySneakPeek()">
+          👀 Sneak Peek (Didi)
+        </button>
+        <button class="vault-btn pass-btn" onclick="openPasscodePrompt()">
+          🔑 Brother Passcode Unlock
+        </button>
+      </div>
+
+      <!-- Hidden Passcode Input form -->
+      <div id="passcodeArea" class="passcode-area hidden">
+        <p class="passcode-hint">Enter brother's secret key (e.g. <strong>12nov</strong> or <strong>didi</strong>):
+        </p>
+        <div class="passcode-input-row">
+          <input type="password" id="passcodeInput" placeholder="Enter secret code..." onkeyup="checkPasskey(event)">
+          <button class="pass-submit-btn" onclick="submitPasscode()">Unlock</button>
+        </div>
+        <div id="passcodeError" class="passcode-error"></div>
+      </div>
+
+      <div class="vault-footer-note">
+        💡 Website automatically swings open the second the clock strikes 12:00 AM on 12th November!
+      </div>
+    </div>
+  </div>
+
   <!-- Fullscreen Particle & Fireworks Canvas -->
   <canvas id="fireworks-canvas"></canvas>
 
@@ -561,8 +625,8 @@
         <div class="polaroid-frame sister-frame">
           <div class="frame-crown">👑</div>
           <div class="polaroid-inner">
-            <img src="media/dipanshi.jpeg" class="custom-photo dipanshi-photo" alt="Birthday Queen Didi"
-              onerror="this.onerror=null; this.src='media/dipanshi.jpeg';">
+            <img src="media/didi.jpeg" class="custom-photo didi-photo" alt="Birthday Queen Didi"
+              onerror="this.onerror=null; this.src='media/didi.jpeg';">
           </div>
           <div class="polaroid-caption">
             <strong>✨ Birthday Queen Didi ✨</strong>
