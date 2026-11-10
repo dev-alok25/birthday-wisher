@@ -1,6 +1,6 @@
 /**
- * Happy Birthday Dipanshi - 6th November
- * Curious Developer Brother Edition & Sibling Teasing Matrix
+ * Happy Birthday Dipanshi Didi - 6th November
+ * Developer Chhota Bhai Alok Edition & Sibling Teasing Matrix
  */
 
 // ================= Background Birthday Music Controller =================
@@ -136,8 +136,8 @@ function triggerTease(type) {
     case 'cash': {
       playTeaseTrack('media/khatam goodbye.mp3', 0.95);
       icon.textContent = '💸';
-      title.textContent = 'Aaye Haaye! 50 Hazaar Lene Aayi Thi? 😂';
-      msg.textContent = 'Khatam! Tata! Bye-Bye! Gaya! Paisa khatam! Bhaiya ka bank account empty ho gaya! Only unlimited brotherly blessings & hugs available for Dipanshi! 😜';
+      title.textContent = 'Aaye Haaye! 50 Hazaar Lene Aayi Thi Didi? 😂';
+      msg.textContent = 'Khatam! Tata! Bye-Bye! Gaya! Paisa khatam! Chhote bhai ka bank account empty ho gaya! Only unlimited brotherly love & blessings available for Dipanshi Didi! 😜';
       shakeScreen();
       break;
     }
@@ -148,8 +148,8 @@ function triggerTease(type) {
     case 'deva': {
       playTeaseTrack('media/Uthale re deva uthale re baba.mp3', 0.95);
       icon.textContent = '🤦‍♂️';
-      title.textContent = 'Mana Kiya Tha Na Mat Dabao?! 😂';
-      msg.textContent = "Babu Bhaiya reaction: 'Uthale re deva uthale re baba, mereko nahi re, isko uthale!' Curiously clicking forbidden buttons will alert the whole family! Happy Birthday Dipanshi! 🚨";
+      title.textContent = 'Mana Kiya Tha Na Didi Mat Dabao?! 😂';
+      msg.textContent = "Babu Bhaiya reaction: 'Uthale re deva uthale re baba, mereko nahi re, isko uthale!' Curiously clicking forbidden buttons will alert the whole family! Happy Birthday Dipanshi Didi! 🚨";
       shakeScreen();
       break;
     }
@@ -161,7 +161,7 @@ function triggerTease(type) {
       playTeaseTrack('media/Voicy_So Beatiful just looking like a woow.mp3', 0.95);
       icon.textContent = '🌟';
       title.textContent = 'So Beautiful, So Elegant... Just Looking Like a WOW! ✨';
-      msg.textContent = 'The ONLY day of the entire year your developer brother will officially admit this in writing! Take a screenshot right now before the system reboots! 📸💖';
+      msg.textContent = 'The ONLY day of the entire year your developer chhota bhai will officially admit this in writing! Take a screenshot right now before the system reboots! 📸💖';
       if (particleSystem) {
         particleSystem.createConfettiBurst(window.innerWidth / 2, window.innerHeight / 2, 80);
       }
@@ -177,8 +177,8 @@ function triggerTease(type) {
         playTeaseTrack('media/I am joking.mp3', 0.95);
       }, 1600);
       icon.textContent = '🥺';
-      title.textContent = 'G Galti Ho Gayi Mujhse...';
-      msg.textContent = 'G ghalti ho gayi... I AM JOKING! Brother is the programmer, and the programmer is always right! Sibling rules say big brother rules! 😜';
+      title.textContent = 'G Galti Ho Gayi Didi...';
+      msg.textContent = 'G ghalti ho gayi... I AM JOKING! Developer brother is always right! Sibling rules say chhota bhai is a genius! 😜';
       break;
     }
 
@@ -189,7 +189,7 @@ function triggerTease(type) {
       playTeaseTrack('media/I am joking.mp3', 0.95);
       icon.textContent = '🍕';
       title.textContent = 'Snack Treaty Rejected by Developer! 😂';
-      msg.textContent = 'I AM JOKING! All Maggi, ice-cream, chocolates, and pastries in the fridge by default belong to the brother! Sibling tax applicable for life! 🍫😋';
+      msg.textContent = 'I AM JOKING! All Maggi, ice-cream, chocolates, and pastries in the fridge by default belong to the developer chhota bhai! Sibling tax applicable for life! 🍫😋';
       break;
     }
 
@@ -199,8 +199,8 @@ function triggerTease(type) {
     case 'brother_smart': {
       playTeaseTrack('media/Gotilo song.mp3', 0.9);
       icon.textContent = '🏆';
-      title.textContent = 'System Verified: Brother is 200% Smarter! 🎓';
-      msg.textContent = 'Honest answer recorded in the database! Brother IQ level: Genius! Victory garba/dance party mode activated! Kudos for admitting the truth, Dipanshi! 💃🕺';
+      title.textContent = 'System Verified: Chhota Bhai is 200% Smarter! 🎓';
+      msg.textContent = 'Honest answer recorded in the database! Chhota bhai IQ level: Genius! Victory dance party mode activated! Kudos for admitting the truth, Dipanshi Didi! 💃🕺';
       launchFireworksShow();
       break;
     }
@@ -234,11 +234,11 @@ function runawayButton(btn) {
   btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
 
   const hints = [
-    "Oops, too slow! 😂",
-    "Can't click it, Dipanshi! 😜",
+    "Oops, too slow Didi! 😂",
+    "Can't click it, Dipanshi Didi! 😜",
     "The button is dodging you! 🏃‍♀️",
-    "Accept it: Brother is smarter! 👨‍💻",
-    "Nice try! Still impossible! 🚀"
+    "Accept it: Chhota bhai is smarter! 👨‍💻",
+    "Nice try Didi! Still impossible! 🚀"
   ];
   const hintEl = document.getElementById('runawayHint');
   if (hintEl) {
@@ -247,7 +247,7 @@ function runawayButton(btn) {
 }
 
 // ================= Developer Brother Feedback System =================
-let selectedRatingText = '⭐⭐⭐⭐⭐ 10/10 Best Brother in the Universe! 🥹💖';
+let selectedRatingText = '⭐⭐⭐⭐⭐ 10/10 Best Chhota Bhai in the Universe! 🥹💖';
 
 function initFeedbackSystem() {
   const reactionCards = document.querySelectorAll('.reaction-card');
@@ -290,12 +290,12 @@ function copyBrotherEmail(btn) {
 
 function sendFeedbackEmail(e) {
   e.preventDefault();
-  const senderName = document.getElementById('fbSenderName')?.value || 'Dipanshi';
+  const senderName = document.getElementById('fbSenderName')?.value || 'Dipanshi Didi';
   const message = document.getElementById('fbMessage')?.value || '';
   const brotherEmail = 'yadavalok7114@gmail.com';
 
   const subject = encodeURIComponent(`🎂 Birthday Surprise Feedback from ${senderName}! 🎉`);
-  const bodyText = `Hi Bhaiya (Alok)! 👋\n\nHere is my feedback for the Birthday Website:\n\n⭐ My Reaction: ${selectedRatingText}\n\n💌 My Message:\n${message}\n\n---\nSent with love from Dipanshi's Birthday Website 🎂✨`;
+  const bodyText = `Hi Alok (Chhote)! 👋\n\nHere is my feedback for the Birthday Website:\n\n⭐ My Reaction: ${selectedRatingText}\n\n💌 My Message:\n${message}\n\n---\nSent with love from Dipanshi Didi 🎂✨`;
   const mailtoUrl = `mailto:${brotherEmail}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
 
   // Trigger celebration confetti burst
@@ -731,10 +731,10 @@ function openGiftBox() {
 
 // ================= Character Interaction Buttons =================
 const motuQuotes = [
-  "Crunch, crunch, yum! 🥟 Garam samosa kha ke Motu ka dimaag chalu ho gaya! Happy Birthday Dipanshi! 🎉",
-  "Dipanshi, tum jiyo hazaro saal! Aur har saal mujhe party me aise hi crunchy samosay khilao! 🥳",
-  "Khaike samosa, Motu ka dil garden garden ho gaya! Keep shining always Dipanshi! 💖",
-  "Patlu ko bolo cake khaye, main toh Dipanshi ke naam ka samosa hi todunga! 🥟✨"
+  "Crunch, crunch, yum! 🥟 Garam samosa kha ke Motu ka dimaag chalu ho gaya! Happy Birthday Dipanshi Didi! 🎉",
+  "Dipanshi Didi, aap jiyo hazaro saal! Aur har saal mujhe party me aise hi crunchy samosay khilao! 🥳",
+  "Khaike samosa, Motu ka dil garden garden ho gaya! Keep shining always Dipanshi Didi! 💖",
+  "Patlu ko bolo cake khaye, main toh Dipanshi Didi ke naam ka samosa hi todunga! 🥟✨"
 ];
 let motuQuoteIndex = 0;
 
@@ -757,10 +757,10 @@ function feedMotu() {
 }
 
 const patluQuotes = [
-  "Aaj kamayenga to kal baithkar khayenga! 💼💰 Scientific rule for Dipanshi's golden future!",
-  "Idea! Dipanshi ke 6th November par hum sab milkar universe ka sabse bada party karenge! 🚀",
-  "Meri calculation ke mutabiq: Dipanshi's future is filled with 100% success & joy! 🌟",
-  "Dimaag ki batti keh rahi hai: Dipanshi is born to conquer her dreams! 🌈"
+  "Aaj kamayenga to kal baithkar khayenga! 💼💰 Scientific rule for Dipanshi Didi's golden future!",
+  "Idea! Dipanshi Didi ke 6th November par hum sab milkar universe ka sabse bada party karenge! 🚀",
+  "Meri calculation ke mutabiq: Dipanshi Didi's future is filled with 100% success & joy! 🌟",
+  "Dimaag ki batti keh rahi hai: Dipanshi Didi is born to conquer her dreams! 🌈"
 ];
 let patluQuoteIndex = 0;
 
